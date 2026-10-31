@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buku Tamu Digital — Telkom University</title>
+  
+  <!-- Google Fonts: Inter (Heading) & Open Sans (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS v3 via CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvasBg: '#f8f9fa',
+            surfaceCard: '#ffffff',
+            darkNeutral: '#343a40',
+            mutedText: '#6c757d',
+            subtleBorder: '#e9ecef',
+            subtleBorderDark: '#dee2e6',
+            accentCoral: '#ff5252',
+            accentCoralHover: '#e03e3e',
+            accentCoralLight: '#fff1f1',
+            telkomCrimson: '#e01a3f',
+            badgeGreen: '#10b981',
+            badgeAmber: '#f59e0b',
+          },
+          fontFamily: {
+            heading: ['Inter', 'sans-serif'],
+            body: ['Open Sans', 'sans-serif'],
+          },
+          boxShadow: {
+            subtle: '0 1px 3px rgba(0, 0, 0, 0.05)',
+            elevated: '0 4px 12px rgba(0, 0, 0, 0.05)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      background-color: #f8f9fa;
+      color: #343a40;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Inter', sans-serif;
+    }
+    .card-clean {
+      background-color: #ffffff;
+      border: 1px solid #e9ecef;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f8f9fa;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #dee2e6;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ced4da;
+    }
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .pulse-dot {
+      animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-[#343a40] antialiased flex flex-col xl:flex-row overflow-x-hidden bg-[#f8f9fa]">
+
+  <!-- ======================================================== -->
+  <!-- SIDEBAR NAVIGATION (Telkom University Academic Portal)   -->
+  <!-- ======================================================== -->
+  <aside class="w-full xl:w-64 bg-white border-r border-[#e9ecef] flex-shrink-0 flex flex-col justify-between z-30">
+    <div>
+      <!-- Brand Header -->
+      <div class="px-6 py-5 border-b border-[#f1f3f5] flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-white border border-[#dee2e6] flex items-center justify-center shadow-sm p-1.5 flex-shrink-0">
+            <!-- Telkom University Emblem Vector -->
+            <svg class="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 4C19 4 15 8.5 15 14C15 20.5 24 30 24 30C24 30 33 20.5 33 14C33 8.5 29 4 24 4Z" fill="#e01a3f"></path>
+              <path d="M24 44C16 38 10 28 10 18H14C14 26 19 34 24 38C29 34 34 26 34 18H38C38 28 32 38 24 44Z" fill="#9ccc65"></path>
+              <circle cx="24" cy="14" r="4.5" fill="#ffffff"></circle>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-sm font-bold text-[#343a40] leading-tight tracking-tight">Buku Tamu Digital</h1>
+            <p class="text-[11px] text-[#6c757d]">Telkom University</p>
+          </div>
+        </div>
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-[#fff1f1] text-[#e01a3f] border border-[#ffcdd2]">
+          UTS CC
+        </span>
+      </div>
+
+      <!-- Quick Search Bar -->
+      <div class="px-5 pt-4 pb-2">
+        <div class="relative">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-[#adb5bd]"></i>
+          <input id="searchInput" class="w-full bg-[#f8f9fa] text-xs pl-8 pr-3 py-2 rounded-lg border border-[#e9ecef] focus:outline-none focus:border-[#343a40] focus:bg-white placeholder-[#adb5bd] transition-colors" placeholder="Cari nama, instansi..." type="text">
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="px-3 space-y-5 py-3">
+        <!-- Menu Utama -->
+        <div>
+          <span class="px-3 text-[10px] font-semibold text-[#adb5bd] uppercase tracking-wider">Navigasi Utama</span>
+          <div class="mt-1.5 space-y-1">
+            <a class="flex items-center justify-between px-3 py-2 text-xs font-semibold text-white bg-[#ff5252] rounded-lg shadow-sm" href="#dashboard">
+              <span class="flex items-center gap-2.5">
+                <i class="fa-solid fa-gauge-high text-xs"></i> Dashboard Tamu
+              </span>
+            </a>
+            <a class="flex items-center justify-between px-3 py-2 text-xs font-medium text-[#6c757d] hover:text-[#343a40] hover:bg-[#f8f9fa] rounded-lg transition-colors group" href="#form-registrasi">
+              <span class="flex items-center gap-2.5">
+                <i class="fa-solid fa-user-plus text-xs text-[#adb5bd] group-hover:text-[#343a40]"></i> Registrasi Tamu
+              </span>
+              <span class="text-[#adb5bd] group-hover:text-[#ff5252] transition-colors"><i class="fa-solid fa-plus text-[10px]"></i></span>
+            </a>
+            <a class="flex items-center justify-between px-3 py-2 text-xs font-medium text-[#6c757d] hover:text-[#343a40] hover:bg-[#f8f9fa] rounded-lg transition-colors group" href="#tabel-tamu">
+              <span class="flex items-center gap-2.5">
+                <i class="fa-solid fa-address-book text-xs text-[#adb5bd] group-hover:text-[#343a40]"></i> Daftar Hadir
+              </span>
+              <span id="navGuestCount" class="bg-[#f1f3f5] text-[#343a40] text-[10px] font-semibold px-2 py-0.5 rounded-full border border-[#dee2e6]">0</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Spesifikasi Cloud Native -->
+        <div>
+          <span class="px-3 text-[10px] font-semibold text-[#adb5bd] uppercase tracking-wider">Spesifikasi Cloud</span>
+          <div class="mt-1.5 space-y-1 text-xs text-[#6c757d]">
+            <div class="flex items-center gap-2 px-3 py-1.5">
+              <i class="fa-brands fa-docker text-blue-500 w-4"></i>
+              <span class="text-[11px]">Named Volume: <strong class="text-[#343a40]">guestbook-db-data</strong></span>
+            </div>
+            <div class="flex items-center gap-2 px-3 py-1.5">
+              <i class="fa-solid fa-network-wired text-purple-500 w-4"></i>
+              <span class="text-[11px]">Bridge Network: <strong class="text-[#343a40]">app-net</strong></span>
+            </div>
+            <div class="flex items-center gap-2 px-3 py-1.5">
+              <i class="fa-brands fa-jenkins text-red-500 w-4"></i>
+              <span class="text-[11px]">CI/CD: <strong class="text-[#343a40]">Jenkins 5-Stage</strong></span>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- User / Admin Profile Footer -->
+    <div class="p-4 border-t border-[#f1f3f5] bg-white">
+      <div class="flex items-center justify-between p-1.5 rounded-lg hover:bg-[#f8f9fa] transition-colors">
+        <div class="flex items-center gap-3">
+          <div class="relative">
+            <div class="w-8 h-8 rounded-full bg-[#343a40] flex items-center justify-center font-bold text-xs text-white shadow-sm">
+              TU
+            </div>
+            <span id="statusIndicatorDot" class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white pulse-dot"></span>
+          </div>
+          <div class="overflow-hidden">
+            <h2 class="text-xs font-semibold text-[#343a40] truncate">Panitia Acara Kampus</h2>
+            <p id="apiStatusText" class="text-[11px] text-emerald-600 font-medium truncate">API Connected (200)</p>
+          </div>
+        </div>
+        <button id="btnManualRefresh" class="text-[#adb5bd] hover:text-[#343a40] p-1.5 rounded-md transition-colors" title="Muat Ulang Data (Sync)" type="button">
+          <i class="fa-solid fa-rotate text-xs"></i>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ======================================================== -->
+  <!-- MAIN CONTENT AREA                                        -->
+  <!-- ======================================================== -->
+  <main class="flex-1 flex flex-col min-w-0 bg-[#f8f9fa]" id="dashboard">
+    
+    <!-- Top Header Bar -->
+    <header class="bg-white border-b border-[#e9ecef] px-6 lg:px-8 py-3.5 flex items-center justify-between sticky top-0 z-20">
+      <div class="flex items-center gap-3">
+        <span class="text-xs text-[#6c757d]">Telkom University • Fakultas Informatika / FTE</span>
+        <span class="text-[#dee2e6]">•</span>
+        <span id="liveClock" class="text-xs font-semibold text-[#343a40]">--:--:-- WIB</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span id="connectionBadge" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Backend Ready
+        </span>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="p-6 lg:p-8 space-y-7 max-w-7xl w-full mx-auto">
+      
+      <!-- Toast / Global Alert Banner (Hidden by default) -->
+      <div id="alertBanner" class="hidden transition-all duration-300 transform rounded-xl p-4 border flex items-start justify-between gap-3 shadow-sm">
+        <div class="flex items-center gap-3">
+          <i id="alertIcon" class="fa-solid text-sm"></i>
+          <div>
+            <h4 id="alertTitle" class="text-xs font-bold"></h4>
+            <p id="alertMessage" class="text-xs mt-0.5"></p>
+          </div>
+        </div>
+        <button id="alertCloseBtn" type="button" class="text-xs opacity-60 hover:opacity-100 p-1">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Minimalist Hero Header Banner -->
+      <section class="card-clean overflow-hidden relative p-6 md:p-8 bg-white border border-[#e9ecef] flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+        <div class="relative z-10 space-y-2 max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#fff1f1] text-[#e01a3f] text-xs font-semibold border border-[#ffcdd2]">
+            <i class="fa-solid fa-graduation-cap"></i> Ujian Chunin Cloud Computing — Kasus 1
+          </div>
+          <h1 class="text-2xl md:text-3xl font-bold tracking-tight text-[#343a40] leading-tight">
+            Buku Tamu Digital <span class="text-[#ff5252]">Kampus</span>
+          </h1>
+          <p class="text-xs md:text-sm text-[#6c757d] max-w-xl font-normal leading-relaxed">
+            Sistem registrasi & pencatatan kehadiran pengunjung acara kampus terintegrasi dengan arsitektur Docker Named Volume (<code class="text-[#343a40] bg-[#f1f3f5] px-1 py-0.5 rounded">guestbook-db-data</code>) dan otomatisasi Jenkins CI/CD Pipeline.
+          </p>
+        </div>
+        <div class="relative z-10 flex flex-wrap md:flex-col gap-2.5 shrink-0">
+          <a class="px-4 py-2.5 bg-[#ff5252] hover:bg-[#e03e3e] text-white rounded-lg text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition duration-150" href="#form-registrasi">
+            <i class="fa-solid fa-plus text-xs"></i> <span>Isi Buku Tamu</span>
+          </a>
+          <button id="btnHealthCheck" class="px-4 py-2.5 bg-[#343a40] hover:bg-[#191b23] text-white border border-[#343a40] rounded-lg text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition duration-150" type="button">
+            <i class="fa-solid fa-heart-pulse text-[#ff5252] text-xs"></i> <span>Cek Server (/health)</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Stat Cards: Summary Metrics -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-purpose="metrics-summary">
+        <!-- Total Tamu -->
+        <div class="card-clean p-5 flex flex-col justify-between">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-[#6c757d]">Total Kunjungan</span>
+            <div class="w-8 h-8 rounded-lg bg-[#ff5252]/10 text-[#ff5252] flex items-center justify-center text-xs font-semibold">
+              <i class="fa-solid fa-users"></i>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="flex items-baseline gap-2">
+              <span id="statTotalGuests" class="text-2xl font-bold text-[#ff5252]">0</span>
+              <span class="text-xs text-[#6c757d]">Tamu</span>
+            </div>
+            <div class="flex items-center gap-1 mt-1 text-[11px] text-[#6c757d]">
+              <i class="fa-solid fa-circle-check text-emerald-500 text-[10px]"></i>
+              <span>Tersimpan di Named Volume</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Instansi Unik -->
+        <div class="card-clean p-5 flex flex-col justify-between">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-[#6c757d]">Instansi Terdata</span>
+            <div class="w-8 h-8 rounded-lg bg-[#f8f9fa] border border-[#e9ecef] text-[#343a40] flex items-center justify-center text-xs">
+              <i class="fa-solid fa-building text-[#ff5252]"></i>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="flex items-baseline gap-2">
+              <span id="statUniqueInstitutions" class="text-2xl font-bold text-[#343a40]">0</span>
+              <span class="text-xs text-[#6c757d]">Instansi</span>
+            </div>
+            <div class="inline-flex items-center gap-1.5 mt-1 text-[11px] text-[#6c757d]">
+              <span>Asal Kampus / Industri / Umum</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Waktu Sinkronisasi Terakhir -->
+        <div class="card-clean p-5 flex flex-col justify-between">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-[#6c757d]">Status Sinkronisasi</span>
+            <div class="w-8 h-8 rounded-lg bg-[#f8f9fa] border border-[#e9ecef] text-[#343a40] flex items-center justify-center text-xs">
+              <i class="fa-solid fa-cloud-arrow-down text-[#ff5252] text-xs"></i>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="flex items-baseline gap-1">
+              <span id="statSyncTime" class="text-base font-bold text-[#343a40]">Baru saja</span>
+            </div>
+            <div class="text-[11px] text-[#adb5bd] mt-1">Real-Time Asynchronous (fetch)</div>
+          </div>
+        </div>
+
+        <!-- Data Immunity Status -->
+        <div class="card-clean p-5 flex flex-col justify-between">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-[#6c757d]">Data Immunity</span>
+            <div class="w-8 h-8 rounded-lg bg-[#f8f9fa] border border-[#e9ecef] text-[#343a40] flex items-center justify-center text-xs">
+              <i class="fa-solid fa-shield-halved text-[#10b981] text-xs"></i>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="flex items-baseline gap-1">
+              <span class="text-base font-bold text-emerald-600">Aktif & Aman</span>
+            </div>
+            <div class="text-[11px] text-[#adb5bd] mt-1">Tahan perintah docker rm -f</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Split Layout: Left Panel (Formulir Registrasi) & Right Panel (Daftar Hadir Real-Time) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
+        
+        <!-- ======================================================== -->
+        <!-- FORMULIR REGISTRASI TAMU (Col: 5)                        -->
+        <!-- ======================================================== -->
+        <section class="card-clean p-6 lg:col-span-5" id="form-registrasi">
+          <div class="pb-4 border-b border-[#f1f3f5] flex items-center justify-between">
+            <div>
+              <h3 class="font-bold text-sm text-[#343a40] flex items-center gap-2">
+                <i class="fa-solid fa-pen-to-square text-[#ff5252]"></i> Form Registrasi Tamu Baru
+              </h3>
+              <p class="text-[11px] text-[#6c757d] mt-0.5">Isi data identitas dan keperluan kunjungan Anda</p>
+            </div>
+            <span class="text-[10px] font-semibold text-[#adb5bd] bg-[#f8f9fa] px-2 py-1 rounded border border-[#e9ecef]">POST /messages</span>
+          </div>
+
+          <form id="guestForm" class="mt-5 space-y-4">
+            
+            <!-- Input Nama -->
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <label for="nameInput" class="text-xs font-semibold text-[#343a40]">
+                  Nama Lengkap <span class="text-red-500">*</span>
+                </label>
+                <span id="nameCount" class="text-[10px] text-[#adb5bd]">0/100</span>
+              </div>
+              <div class="relative">
+                <i class="fa-solid fa-user absolute left-3 top-2.5 text-xs text-[#adb5bd]"></i>
+                <input 
+                  type="text" 
+                  id="nameInput" 
+                  required 
+                  maxlength="100" 
+                  placeholder="Contoh: Budi Santoso, S.Kom." 
+                  class="w-full bg-[#f8f9fa] text-xs pl-8 pr-3 py-2 rounded-lg border border-[#e9ecef] focus:outline-none focus:border-[#ff5252] focus:bg-white placeholder-[#adb5bd] transition-colors"
+                >
+              </div>
+              <p id="nameError" class="hidden text-[11px] text-red-500 mt-1"></p>
+            </div>
+
+            <!-- Input Instansi -->
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <label for="institutionInput" class="text-xs font-semibold text-[#343a40]">
+                  Asal Instansi / Kampus <span class="text-red-500">*</span>
+                </label>
+                <span id="institutionCount" class="text-[10px] text-[#adb5bd]">0/150</span>
+              </div>
+              <div class="relative">
+                <i class="fa-solid fa-building-columns absolute left-3 top-2.5 text-xs text-[#adb5bd]"></i>
+                <input 
+                  type="text" 
+                  id="institutionInput" 
+                  required 
+                  maxlength="150" 
+                  placeholder="Contoh: Telkom University / PT Maju Jaya" 
+                  class="w-full bg-[#f8f9fa] text-xs pl-8 pr-3 py-2 rounded-lg border border-[#e9ecef] focus:outline-none focus:border-[#ff5252] focus:bg-white placeholder-[#adb5bd] transition-colors"
+                >
+              </div>
+              <!-- Quick Tag Suggestions -->
+              <div class="flex items-center gap-1.5 mt-2">
+                <span class="text-[10px] text-[#adb5bd]">Pilih cepat:</span>
+                <button type="button" class="quick-tag text-[10px] bg-[#f8f9fa] hover:bg-[#e9ecef] text-[#343a40] px-2 py-0.5 rounded border border-[#dee2e6] transition" data-val="Telkom University">Telkom University</button>
+                <button type="button" class="quick-tag text-[10px] bg-[#f8f9fa] hover:bg-[#e9ecef] text-[#343a40] px-2 py-0.5 rounded border border-[#dee2e6] transition" data-val="Umum">Umum</button>
+                <button type="button" class="quick-tag text-[10px] bg-[#f8f9fa] hover:bg-[#e9ecef] text-[#343a40] px-2 py-0.5 rounded border border-[#dee2e6] transition" data-val="Alumni">Alumni</button>
+              </div>
+              <p id="institutionError" class="hidden text-[11px] text-red-500 mt-1"></p>
+            </div>
+
+            <!-- Textarea Keperluan -->
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <label for="purposeInput" class="text-xs font-semibold text-[#343a40]">
+                  Keperluan Kunjungan <span class="text-red-500">*</span>
+                </label>
+                <span id="purposeCount" class="text-[10px] text-[#adb5bd]">0/300</span>
+              </div>
+              <div class="relative">
+                <textarea 
+                  id="purposeInput" 
+                  required 
+                  maxlength="300" 
+                  rows="3" 
+                  placeholder="Contoh: Menghadiri Seminar Cloud Computing & DevOps di Gedung Grha Widyatama" 
+                  class="w-full bg-[#f8f9fa] text-xs p-3 rounded-lg border border-[#e9ecef] focus:outline-none focus:border-[#ff5252] focus:bg-white placeholder-[#adb5bd] transition-colors resize-none"
+                ></textarea>
+              </div>
+              <p id="purposeError" class="hidden text-[11px] text-red-500 mt-1"></p>
+            </div>
+
+            <!-- Submit Button -->
+            <button 
+              type="submit" 
+              id="submitBtn" 
+              class="w-full py-2.5 px-4 bg-[#ff5252] hover:bg-[#e03e3e] text-white rounded-lg text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <i class="fa-solid fa-paper-plane text-xs"></i> <span>Simpan Buku Tamu</span>
+            </button>
+
+            <p class="text-[10px] text-center text-[#adb5bd] pt-1">
+              Data disimpan persisten di Docker Named Volume <code class="text-[#343a40]">guestbook-db-data</code>.
+            </p>
+          </form>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- DAFTAR HADIR PENGUNJUNG / REAL-TIME LIST (Col: 7)         -->
+        <!-- ======================================================== -->
+        <section class="card-clean p-6 lg:col-span-7 flex flex-col justify-between" id="tabel-tamu">
+          <div>
+            <!-- Table Toolbar Header -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#f1f3f5]">
+              <div>
+                <h3 class="font-bold text-sm text-[#343a40] flex items-center gap-2">
+                  <i class="fa-solid fa-list-check text-[#343a40]"></i> Daftar Pengunjung Tercatat
+                </h3>
+                <p class="text-[11px] text-[#6c757d] mt-0.5">Pemantauan data kehadiran tamu secara real-time</p>
+              </div>
+              
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] font-semibold text-[#adb5bd] bg-[#f8f9fa] px-2 py-1 rounded border border-[#e9ecef]">GET & DELETE</span>
+                <button id="btnReloadTable" class="px-2.5 py-1 text-xs text-[#343a40] font-medium bg-white hover:bg-[#f8f9fa] rounded-md border border-[#e9ecef] shadow-sm transition flex items-center gap-1.5" type="button">
+                  <i class="fa-solid fa-rotate-right text-[11px] text-[#6c757d]"></i> <span>Sinkronkan</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Loading Spinner State -->
+            <div id="tableLoading" class="py-12 flex flex-col items-center justify-center text-[#adb5bd] space-y-3">
+              <i class="fa-solid fa-circle-notch fa-spin text-2xl text-[#ff5252]"></i>
+              <p class="text-xs">Memuat daftar tamu dari backend...</p>
+            </div>
+
+            <!-- Empty State -->
+            <div id="tableEmpty" class="hidden py-14 flex flex-col items-center justify-center text-center space-y-3">
+              <div class="w-12 h-12 rounded-full bg-[#f8f9fa] border border-[#e9ecef] flex items-center justify-center text-lg text-[#adb5bd]">
+                <i class="fa-solid fa-users-slash"></i>
+              </div>
+              <h4 class="text-xs font-bold text-[#343a40]">Belum Ada Tamu yang Terdaftar</h4>
+              <p class="text-[11px] text-[#6c757d] max-w-sm">
+                Buku tamu saat ini masih kosong. Silakan gunakan formulir di samping untuk menambahkan entri pertama.
+              </p>
+            </div>
+
+            <!-- Table Container -->
+            <div id="tableWrapper" class="overflow-x-auto mt-2 hidden">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="border-b border-[#dee2e6] text-[10px] font-bold text-[#343a40] uppercase tracking-wider bg-[#f8f9fa]/70">
+                    <th class="py-2.5 px-3 w-12 text-center">Index</th>
+                    <th class="py-2.5 px-3">Nama Tamu & Instansi</th>
+                    <th class="py-2.5 px-3">Keperluan Kunjungan</th>
+                    <th class="py-2.5 px-3">Waktu Masuk</th>
+                    <th class="py-2.5 px-3 text-right">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="guestTableBody" class="divide-y divide-[#f1f3f5] text-xs">
+                  <!-- Dynamic rows generated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Table Footer Info -->
+          <div class="pt-4 mt-3 border-t border-[#f1f3f5] flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#6c757d] gap-2">
+            <span id="tableEntriesCount">Menampilkan 0 tamu terdata</span>
+            <div class="flex items-center gap-1.5 text-[10px] text-[#adb5bd]">
+              <span>Tombol Hapus memicu <code class="text-[#343a40]">DELETE /messages?index=X</code></span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Application Footer -->
+    <footer class="mt-auto px-6 lg:px-8 py-5 border-t border-[#e9ecef] bg-white flex flex-col sm:flex-row items-center justify-between text-xs text-[#adb5bd] gap-2">
+      <div>
+        © 2026 <strong class="text-[#6c757d]">Telkom University</strong> — Cloud Computing Ujian Chunin UTS (Live Bind Mount Verified).
+      </div>
+      <div class="flex items-center gap-4 text-[#6c757d] text-[11px]">
+        <span>Docker Compose</span>
+        <span>•</span>
+        <span>Named Volume (Data Immunity)</span>
+        <span>•</span>
+        <span>Jenkins CI/CD Pipeline</span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- MODAL KONFIRMASI HAPUS TAMU                              -->
+  <!-- ======================================================== -->
+  <div id="deleteModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="card-clean bg-white max-w-md w-full p-6 space-y-4 shadow-xl transform transition-all">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center text-base shrink-0">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-[#343a40]">Konfirmasi Hapus Entri Tamu</h3>
+          <p class="text-xs text-[#6c757d]">Tindakan ini akan menghapus data dari volume secara permanen.</p>
+        </div>
+      </div>
+
+      <div class="p-3 bg-[#f8f9fa] rounded-lg border border-[#e9ecef] text-xs space-y-1.5">
+        <div class="flex justify-between">
+          <span class="text-[#6c757d]">Indeks Target:</span>
+          <span id="modalTargetIndex" class="font-bold text-[#343a40]">#0</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-[#6c757d]">Nama Tamu:</span>
+          <span id="modalTargetName" class="font-semibold text-[#343a40]">-</span>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end gap-2.5 pt-2">
+        <button id="modalCancelBtn" type="button" class="px-4 py-2 text-xs font-semibold text-[#6c757d] hover:bg-[#f8f9fa] rounded-lg border border-[#dee2e6] transition">
+          Batal
+        </button>
+        <button id="modalConfirmBtn" type="button" class="px-4 py-2 text-xs font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg shadow-sm flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-trash-can text-xs"></i> <span>Hapus Sekarang</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- VANILLA JAVASCRIPT APPLICATION LOGIC                     -->
+  <!-- ======================================================== -->
+  <script>
+    // State Aplikasi
+    let currentGuests = [];
+    let pendingDeleteIndex = null;
+    let pendingDeleteName = '';
+
+    // Deteksi cerdas URL Base API
+    // - Jika diakses via Nginx reverse proxy port 8081 -> '/api'
+    // - Jika diakses langsung ke port 8000 -> '' (karena backend juga menerima /messages langsung)
+    const isDirectBackend = window.location.port === '8000';
+    const API_BASE = isDirectBackend ? '' : '/api';
+
+    // Elemen DOM
+    const guestTableBody = document.getElementById('guestTableBody');
+    const tableLoading = document.getElementById('tableLoading');
+    const tableEmpty = document.getElementById('tableEmpty');
+    const tableWrapper = document.getElementById('tableWrapper');
+    const tableEntriesCount = document.getElementById('tableEntriesCount');
+    const navGuestCount = document.getElementById('navGuestCount');
+    const statTotalGuests = document.getElementById('statTotalGuests');
+    const statUniqueInstitutions = document.getElementById('statUniqueInstitutions');
+    const statSyncTime = document.getElementById('statSyncTime');
+    const apiStatusText = document.getElementById('apiStatusText');
+    const statusIndicatorDot = document.getElementById('statusIndicatorDot');
+    const connectionBadge = document.getElementById('connectionBadge');
+
+    const guestForm = document.getElementById('guestForm');
+    const nameInput = document.getElementById('nameInput');
+    const institutionInput = document.getElementById('institutionInput');
+    const purposeInput = document.getElementById('purposeInput');
+    const submitBtn = document.getElementById('submitBtn');
+
+    const nameCount = document.getElementById('nameCount');
+    const institutionCount = document.getElementById('institutionCount');
+    const purposeCount = document.getElementById('purposeCount');
+
+    const deleteModal = document.getElementById('deleteModal');
+    const modalTargetIndex = document.getElementById('modalTargetIndex');
+    const modalTargetName = document.getElementById('modalTargetName');
+    const modalCancelBtn = document.getElementById('modalCancelBtn');
+    const modalConfirmBtn = document.getElementById('modalConfirmBtn');
+
+    const alertBanner = document.getElementById('alertBanner');
+    const alertTitle = document.getElementById('alertTitle');
+    const alertMessage = document.getElementById('alertMessage');
+    const alertIcon = document.getElementById('alertIcon');
+    const alertCloseBtn = document.getElementById('alertCloseBtn');
+
+    const searchInput = document.getElementById('searchInput');
+    const btnReloadTable = document.getElementById('btnReloadTable');
+    const btnManualRefresh = document.getElementById('btnManualRefresh');
+    const btnHealthCheck = document.getElementById('btnHealthCheck');
+
+    // ==========================================
+    // 1. Sistem Notifikasi Banner & Alert
+    // ==========================================
+    let alertTimeout = null;
+    function showAlert(type, title, message, autoHide = 5000) {
+      if (alertTimeout) clearTimeout(alertTimeout);
+
+      alertBanner.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'text-emerald-800', 'bg-red-50', 'border-red-200', 'text-red-800', 'bg-blue-50', 'border-blue-200', 'text-blue-800');
+      
+      if (type === 'success') {
+        alertBanner.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-800');
+        alertIcon.className = 'fa-solid fa-circle-check text-emerald-600 text-sm';
+      } else if (type === 'error') {
+        alertBanner.classList.add('bg-red-50', 'border-red-200', 'text-red-800');
+        alertIcon.className = 'fa-solid fa-circle-exclamation text-red-600 text-sm';
+      } else {
+        alertBanner.classList.add('bg-blue-50', 'border-blue-200', 'text-blue-800');
+        alertIcon.className = 'fa-solid fa-circle-info text-blue-600 text-sm';
+      }
+
+      alertTitle.textContent = title;
+      alertMessage.textContent = message;
+      alertBanner.classList.remove('hidden');
+
+      if (autoHide) {
+        alertTimeout = setTimeout(() => {
+          alertBanner.classList.add('hidden');
+        }, autoHide);
+      }
+    }
+
+    alertCloseBtn.addEventListener('click', () => alertBanner.classList.add('hidden'));
+
+    // ==========================================
+    // 2. Format Waktu & Avatar Helper
+    // ==========================================
+    function formatDateTime(isoString) {
+      try {
+        const date = new Date(isoString);
+        return new Intl.DateTimeFormat('id-ID', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          timeZoneName: 'short'
+        }).format(date);
+      } catch (e) {
+        return isoString || '-';
+      }
+    }
+
+    function getInitials(name) {
+      if (!name) return '??';
+      const parts = name.trim().split(/\s+/);
+      if (parts.length >= 2) {
+        return (parts[0][0] + parts[1][0]).toUpperCase();
+      }
+      return name.substring(0, 2).toUpperCase();
+    }
+
+    // ==========================================
+    // 3. API Calls: Load Data (GET /messages)
+    // ==========================================
+    async function loadMessages() {
+      try {
+        const response = await fetch(`${API_BASE}/messages`, {
+          method: 'GET',
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP Error ${response.status}: ${response.statusText}`);
+        }
+
+        const result = await response.json();
+        currentGuests = Array.isArray(result.messages) ? result.messages : [];
+        
+        renderTable(currentGuests);
+        updateStats(currentGuests);
+        updateConnectionStatus(true);
+      } catch (error) {
+        console.error('Gagal mengambil data tamu:', error);
+        tableLoading.classList.add('hidden');
+        tableWrapper.classList.add('hidden');
+        tableEmpty.classList.remove('hidden');
+        tableEmpty.querySelector('h4').textContent = 'Koneksi ke Backend Terputus';
+        tableEmpty.querySelector('p').textContent = `Tidak dapat terhubung ke ${API_BASE}/messages. Pastikan kontainer backend sedang berjalan.`;
+        updateConnectionStatus(false, error.message);
+      }
+    }
+
+    // ==========================================
+    // 4. Render Tabel Tamu (XSS-Safe DOM)
+    // ==========================================
+    function renderTable(guests) {
+      tableLoading.classList.add('hidden');
+
+      if (!guests || guests.length === 0) {
+        tableWrapper.classList.add('hidden');
+        tableEmpty.classList.remove('hidden');
+        tableEmpty.querySelector('h4').textContent = 'Belum Ada Tamu yang Terdaftar';
+        tableEmpty.querySelector('p').textContent = 'Buku tamu saat ini masih kosong. Silakan gunakan formulir untuk menambah entri pertama.';
+        tableEntriesCount.textContent = 'Menampilkan 0 tamu terdata';
+        return;
+      }
+
+      tableEmpty.classList.add('hidden');
+      tableWrapper.classList.remove('hidden');
+      guestTableBody.innerHTML = '';
+
+      guests.forEach((guest) => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-[#f8f9fa] transition-colors border-b border-[#f1f3f5]';
+
+        // 1. Kolom Index (#0, #1, ...)
+        const tdIndex = document.createElement('td');
+        tdIndex.className = 'py-3 px-3 text-center';
+        const indexBadge = document.createElement('span');
+        indexBadge.className = 'inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-[#f1f3f5] text-[#343a40] border border-[#dee2e6]';
+        indexBadge.textContent = `#${guest.index}`;
+        tdIndex.appendChild(indexBadge);
+
+        // 2. Kolom Nama Tamu & Instansi
+        const tdName = document.createElement('td');
+        tdName.className = 'py-3 px-3';
+        const nameContainer = document.createElement('div');
+        nameContainer.className = 'flex items-center gap-2.5';
+        
+        const avatar = document.createElement('div');
+        avatar.className = 'w-7 h-7 rounded-full bg-[#f1f3f5] border border-[#dee2e6] text-[#343a40] flex items-center justify-center font-bold text-[10px] shrink-0';
+        avatar.textContent = getInitials(guest.name);
+        
+        const nameDetails = document.createElement('div');
+        const nameEl = document.createElement('div');
+        nameEl.className = 'font-semibold text-[#343a40]';
+        nameEl.textContent = guest.name; // Aman XSS
+        
+        const instEl = document.createElement('div');
+        instEl.className = 'text-[11px] text-[#6c757d] flex items-center gap-1 mt-0.5';
+        instEl.innerHTML = `<i class="fa-solid fa-building text-[9px] text-[#adb5bd]"></i> `;
+        const instText = document.createTextNode(guest.institution);
+        instEl.appendChild(instText);
+
+        nameDetails.appendChild(nameEl);
+        nameDetails.appendChild(instEl);
+        nameContainer.appendChild(avatar);
+        nameContainer.appendChild(nameDetails);
+        tdName.appendChild(nameContainer);
+
+        // 3. Kolom Keperluan
+        const tdPurpose = document.createElement('td');
+        tdPurpose.className = 'py-3 px-3 max-w-xs';
+        const purposeEl = document.createElement('p');
+        purposeEl.className = 'text-xs text-[#343a40] line-clamp-2';
+        purposeEl.textContent = guest.purpose; // Aman XSS
+        tdPurpose.appendChild(purposeEl);
+
+        // 4. Kolom Waktu Masuk
+        const tdTime = document.createElement('td');
+        tdTime.className = 'py-3 px-3 whitespace-nowrap text-[11px] text-[#6c757d]';
+        tdTime.textContent = formatDateTime(guest.created_at);
+
+        // 5. Kolom Aksi (Tombol Hapus)
+        const tdAction = document.createElement('td');
+        tdAction.className = 'py-3 px-3 text-right whitespace-nowrap';
+        const deleteBtn = document.createElement('button');
+        deleteBtn.type = 'button';
+        deleteBtn.className = 'px-2.5 py-1 text-[11px] font-semibold text-red-600 hover:text-white hover:bg-red-600 rounded-md border border-red-200 transition flex items-center gap-1.5 ml-auto';
+        deleteBtn.innerHTML = `<i class="fa-solid fa-trash-can text-[10px]"></i> <span>Hapus</span>`;
+        deleteBtn.setAttribute('title', `Hapus entri #${guest.index}`);
+        deleteBtn.addEventListener('click', () => openDeleteModal(guest.index, guest.name));
+        tdAction.appendChild(deleteBtn);
+
+        tr.appendChild(tdIndex);
+        tr.appendChild(tdName);
+        tr.appendChild(tdPurpose);
+        tr.appendChild(tdTime);
+        tr.appendChild(tdAction);
+
+        guestTableBody.appendChild(tr);
+      });
+
+      tableEntriesCount.textContent = `Menampilkan ${guests.length} tamu terdata`;
+    }
+
+    // ==========================================
+    // 5. Update Kartu Statistik & Badge
+    // ==========================================
+    function updateStats(guests) {
+      const total = guests.length;
+      statTotalGuests.textContent = total;
+      navGuestCount.textContent = total;
+
+      const uniqueInst = new Set(guests.map(g => (g.institution || '').trim().toLowerCase())).size;
+      statUniqueInstitutions.textContent = uniqueInst;
+
+      const now = new Date();
+      statSyncTime.textContent = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')} WIB`;
+    }
+
+    function updateConnectionStatus(isOnline, errorMsg = '') {
+      if (isOnline) {
+        apiStatusText.textContent = 'API Connected (200 OK)';
+        apiStatusText.className = 'text-[11px] text-emerald-600 font-medium truncate';
+        statusIndicatorDot.className = 'absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white pulse-dot';
+        connectionBadge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200';
+        connectionBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Backend Ready`;
+      } else {
+        apiStatusText.textContent = 'API Disconnected';
+        apiStatusText.className = 'text-[11px] text-red-600 font-medium truncate';
+        statusIndicatorDot.className = 'absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-red-500 ring-2 ring-white';
+        connectionBadge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-red-50 text-red-700 border border-red-200';
+        connectionBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> Offline / Reconnecting`;
+      }
+    }
+
+    // ==========================================
+    // 6. Formulir Tambah Tamu (POST /messages)
+    // ==========================================
+    guestForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = nameInput.value.trim();
+      const institution = institutionInput.value.trim();
+      const purpose = purposeInput.value.trim();
+
+      // Validasi sederhana di browser
+      if (!name || !institution || !purpose) {
+        showAlert('error', 'Validasi Gagal', 'Harap isi seluruh field formulir dengan benar.');
+        return;
+      }
+
+      // Kunci tombol submit untuk mencegah double submit
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin text-xs"></i> <span>Menyimpan...</span>`;
+
+      try {
+        const response = await fetch(`${API_BASE}/messages`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: jsonSafeStringify({ name, institution, purpose })
+        });
+
+        const result = await response.json();
+
+        if (response.status === 201) {
+          showAlert('success', 'Registrasi Berhasil', `Selamat datang, ${name}! Entri berhasil disimpan ke database.`);
+          guestForm.reset();
+          updateCharCounts();
+          await loadMessages(); // Refresh tabel secara real-time tanpa reload halaman!
+        } else {
+          const errMsg = result?.error?.message || 'Gagal menambahkan data tamu.';
+          showAlert('error', 'Penyimpanan Ditolak', errMsg);
+        }
+      } catch (err) {
+        console.error('Error POST /messages:', err);
+        showAlert('error', 'Gagal Menghubungi Server', 'Terjadi kesalahan jaringan saat mengirimkan data.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane text-xs"></i> <span>Simpan Buku Tamu</span>`;
+      }
+    });
+
+    function jsonSafeStringify(obj) {
+      return JSON.stringify(obj);
+    }
+
+    // ==========================================
+    // 7. Modal & Eksekusi Hapus (DELETE /messages?index=X)
+    // ==========================================
+    function openDeleteModal(index, name) {
+      pendingDeleteIndex = index;
+      pendingDeleteName = name;
+      modalTargetIndex.textContent = `#${index}`;
+      modalTargetName.textContent = name;
+      deleteModal.classList.remove('hidden');
+    }
+
+    modalCancelBtn.addEventListener('click', () => {
+      deleteModal.classList.add('hidden');
+      pendingDeleteIndex = null;
+    });
+
+    modalConfirmBtn.addEventListener('click', async () => {
+      if (pendingDeleteIndex === null) return;
+
+      modalConfirmBtn.disabled = true;
+      modalConfirmBtn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin text-xs"></i> <span>Menghapus...</span>`;
+
+      try {
+        const response = await fetch(`${API_BASE}/messages?index=${pendingDeleteIndex}`, {
+          method: 'DELETE',
+          headers: { 'Accept': 'application/json' }
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          showAlert('success', 'Entri Dihapus', `Data tamu "${pendingDeleteName}" pada index #${pendingDeleteIndex} berhasil dihapus.`);
+          deleteModal.classList.add('hidden');
+          await loadMessages(); // Sinkronkan ulang tabel dan indeks secara instan!
+        } else {
+          const errMsg = result?.error?.message || 'Gagal menghapus entri tamu.';
+          showAlert('error', 'Gagal Menghapus', errMsg);
+        }
+      } catch (err) {
+        console.error('Error DELETE /messages:', err);
+        showAlert('error', 'Kesalahan Jaringan', 'Tidak dapat mengirim permintaan penghapusan ke server.');
+      } finally {
+        modalConfirmBtn.disabled = false;
+        modalConfirmBtn.innerHTML = `<i class="fa-solid fa-trash-can text-xs"></i> <span>Hapus Sekarang</span>`;
+        pendingDeleteIndex = null;
+      }
+    });
+
+    // ==========================================
+    // 8. Health Check Button (/health)
+    // ==========================================
+    btnHealthCheck.addEventListener('click', async () => {
+      btnHealthCheck.disabled = true;
+      const originalHTML = btnHealthCheck.innerHTML;
+      btnHealthCheck.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin text-[#ff5252] text-xs"></i> <span>Memeriksa...</span>`;
+
+      try {
+        const response = await fetch(`${API_BASE}/health`);
+        const result = await response.json();
+        if (response.ok && result.status === 'UP') {
+          showAlert('success', 'Server Backend Sehat (UP)', `Layanan: ${result.service} • Storage: Writable (${result.total_entries} entri).`);
+        } else {
+          showAlert('error', 'Status Server Bermasalah', JSON.stringify(result));
+        }
+      } catch (err) {
+        showAlert('error', 'Server Tidak Merespons', 'Endpoint /health tidak dapat dijangkau.');
+      } finally {
+        btnHealthCheck.disabled = false;
+        btnHealthCheck.innerHTML = originalHTML;
+      }
+    });
+
+    // ==========================================
+    // 9. Client-side Live Search & Quick Tags
+    // ==========================================
+    searchInput.addEventListener('input', (e) => {
+      const keyword = e.target.value.toLowerCase().trim();
+      if (!keyword) {
+        renderTable(currentGuests);
+        return;
+      }
+      const filtered = currentGuests.filter(g => 
+        (g.name || '').toLowerCase().includes(keyword) ||
+        (g.institution || '').toLowerCase().includes(keyword) ||
+        (g.purpose || '').toLowerCase().includes(keyword)
+      );
+      renderTable(filtered);
+    });
+
+    document.querySelectorAll('.quick-tag').forEach(tag => {
+      tag.addEventListener('click', () => {
+        institutionInput.value = tag.getAttribute('data-val');
+        updateCharCounts();
+      });
+    });
+
+    // ==========================================
+    // 10. Karakter Counter & Jam WIB
+    // ==========================================
+    function updateCharCounts() {
+      nameCount.textContent = `${nameInput.value.length}/100`;
+      institutionCount.textContent = `${institutionInput.value.length}/150`;
+      purposeCount.textContent = `${purposeInput.value.length}/300`;
+    }
+
+    nameInput.addEventListener('input', updateCharCounts);
+    institutionInput.addEventListener('input', updateCharCounts);
+    purposeInput.addEventListener('input', updateCharCounts);
+
+    function updateLiveClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('liveClock').textContent = `${h}:${m}:${s} WIB`;
+    }
+    setInterval(updateLiveClock, 1000);
+    updateLiveClock();
+
+    // Reload Buttons
+    btnReloadTable.addEventListener('click', loadMessages);
+    btnManualRefresh.addEventListener('click', loadMessages);
+
+    // Initial Load saat halaman dibuka
+    document.addEventListener('DOMContentLoaded', () => {
+      loadMessages();
+    });
+  </script>
+</body>
+</html>

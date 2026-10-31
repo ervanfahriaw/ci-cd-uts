@@ -1,0 +1,454 @@
+<!DOCTYPE html><html lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Buku Tamu Digital - Telkom University</title>
+<!-- Google Fonts: Inter & Open Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Open+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<!-- Font Awesome Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvasBg: '#f8f9fa',
+            surfaceCard: '#ffffff',
+            darkNeutral: '#343a40',
+            mutedText: '#6c757d',
+            subtleBorder: '#e9ecef',
+            subtleBorderDark: '#dee2e6',
+            accentCoral: '#ff5252',
+            accentCoralLight: '#fff1f1',
+          },
+          fontFamily: {
+            heading: ['Inter', 'sans-serif'],
+            body: ['Open Sans', 'sans-serif'],
+          },
+          boxShadow: {
+            subtle: '0 1px 3px rgba(0, 0, 0, 0.05)',
+            elevated: '0 4px 12px rgba(0, 0, 0, 0.04)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="typography-and-base">
+    body {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      background-color: #f8f9fa;
+      color: #343a40;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Inter', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f8f9fa;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #dee2e6;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ced4da;
+    }
+  </style>
+<style data-purpose="component-effects">
+    .card-clean {
+      background-color: #ffffff;
+      border: 1px solid #e9ecef;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="min-h-screen text-[#343a40] antialiased flex flex-col xl:flex-row overflow-x-hidden bg-[#f8f9fa]">
+<!-- BEGIN: SidebarNavigation -->
+<!-- Sleek minimalist sidebar modeled after Conceptzilla style -->
+<aside class="w-full xl:w-64 bg-white border-r border-[#e9ecef] flex-shrink-0 flex flex-col justify-between z-30" data-purpose="sidebar">
+<div>
+<!-- Brand Header -->
+<div class="px-6 py-5 border-b border-[#f1f3f5] flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-white border border-[#dee2e6] flex items-center justify-center shadow-sm p-1 flex-shrink-0"><svg class="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 4C19 4 15 8.5 15 14C15 20.5 24 30 24 30C24 30 33 20.5 33 14C33 8.5 29 4 24 4Z" fill="#e01a3f"></path><path d="M24 44C16 38 10 28 10 18H14C14 26 19 34 24 38C29 34 34 26 34 18H38C38 28 32 38 24 44Z" fill="#9ccc65"></path><circle cx="24" cy="14" r="4.5" fill="#ffffff"></circle><path d="M24 20C21.5 20 19 23 19 26C21.5 25 24 27 24 27C24 27 26.5 25 29 26C29 23 26.5 20 24 20Z" fill="#ffffff"></path></svg></div>
+<div>
+<h1 class="text-sm font-semibold text-[#343a40] leading-tight tracking-tight">Buku Tamu</h1>
+<p class="text-[11px] text-[#6c757d]">Telkom University</p>
+</div>
+</div>
+<button aria-label="Menu opsi" class="text-[#6c757d] hover:text-[#343a40] p-1 rounded-md transition-colors" type="button">
+<i class="fa-solid fa-ellipsis-vertical text-xs"></i>
+</button>
+</div>
+<!-- Search Input -->
+<div class="px-5 pt-4 pb-2">
+<div class="relative">
+<i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-[#adb5bd]"></i>
+<input class="w-full bg-[#f8f9fa] text-xs pl-8 pr-3 py-2 rounded-lg border border-[#e9ecef] focus:outline-none focus:border-[#343a40] focus:bg-white placeholder-[#adb5bd] transition-colors" placeholder="Cari data tamu, acara..." type="text">
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="px-3 space-y-5 py-3">
+<!-- Group 1: Menu Utama -->
+<div>
+<span class="px-3 text-[10px] font-semibold text-[#adb5bd] uppercase tracking-wider">Menu Utama</span>
+<div class="mt-1.5 space-y-1">
+<!-- Active link with clean dark pill styling -->
+<a class="flex items-center justify-between px-3 py-2 text-xs font-semibold text-white bg-[#ff5252] rounded-lg shadow-sm" href="#"><span class="flex items-center gap-2.5"><i class="fa-solid fa-gauge-high text-xs"></i> Dashboard Ringkasan</span></a>
+<a class="flex items-center justify-between px-3 py-2 text-xs font-medium text-[#6c757d] hover:text-[#343a40] hover:bg-[#f8f9fa] rounded-lg transition-colors group" href="#form-registrasi">
+<span class="flex items-center gap-2.5">
+<i class="fa-solid fa-user-plus text-xs text-[#adb5bd] group-hover:text-[#343a40]"></i>
+                Registrasi Tamu
+              </span>
+<span class="text-[#adb5bd] group-hover:text-[#ff5252] transition-colors"><i class="fa-solid fa-plus text-[10px]"></i></span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 text-xs font-medium text-[#6c757d] hover:text-[#343a40] hover:bg-[#f8f9fa] rounded-lg transition-colors group" href="#tabel-tamu">
+<span class="flex items-center gap-2.5">
+<i class="fa-solid fa-address-book text-xs text-[#adb5bd] group-hover:text-[#343a40]"></i>
+                Daftar Tamu Masuk
+              </span>
+<span class="bg-[#f1f3f5] text-[#343a40] text-[10px] font-semibold px-2 py-0.5 rounded-full border border-[#dee2e6]">48</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 text-xs font-medium text-[#6c757d] hover:text-[#343a40] hover:bg-[#f8f9fa] rounded-lg transition-colors group" href="#">
+<span class="flex items-center gap-2.5">
+<i class="fa-solid fa-clock-rotate-left text-xs text-[#adb5bd] group-hover:text-[#343a40]"></i>
+                Riwayat Kunjungan
+              </span>
+</a>
+</div>
+</div>
+<!-- Group 2: Kategori Acara -->
+<div>
+<span class="px-3 text-[10px] font-semibold text-[#adb5bd] uppercase tracking-wider">Kategori Acara</span>
+<div class="mt-1.5 space-y-1">
+<a class="flex items-center gap-2.5 px-3 py-2 text-xs text-[#6c757d] hover:text-[#343a40] hover:bg-[#f8f9fa] rounded-lg transition-colors" href="#">
+<span class="w-2 h-2 rounded-full bg-[#adb5bd]"></span>
+<span class="">Seminar &amp; Kuliah Umum</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 text-xs text-[#6c757d] hover:text-[#343a40] hover:bg-[#f8f9fa] rounded-lg transition-colors" href="#">
+<span class="w-2 h-2 rounded-full bg-[#adb5bd]"></span>
+<span class="">Kunjungan Industri</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 text-xs text-[#6c757d] hover:text-[#343a40] hover:bg-[#f8f9fa] rounded-lg transition-colors" href="#">
+<span class="w-2 h-2 rounded-full bg-[#ff5252]"></span>
+<span class="">Sidang Terbuka &amp; Wisuda</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 text-xs text-[#6c757d] hover:text-[#343a40] hover:bg-[#f8f9fa] rounded-lg transition-colors" href="#">
+<span class="w-2 h-2 rounded-full bg-[#adb5bd]"></span>
+<span class="">Urusan Akademik &amp; Rektorat</span>
+</a>
+</div>
+</div>
+<!-- Group 3: Aksi Resepsionis -->
+<div class="px-2 pt-1">
+<div class="p-3 bg-[#f8f9fa] rounded-xl border border-[#e9ecef]">
+<span class="text-[11px] font-semibold text-[#343a40] block mb-2">Aksi Resepsionis</span>
+<ul class="text-xs space-y-2 text-[#6c757d]">
+<li class="">
+<button class="w-full text-left flex items-center justify-between hover:text-[#343a40] transition" type="button">
+<span class="flex items-center gap-2"><i class="fa-solid fa-id-badge text-xs text-[#adb5bd]"></i> Cetak Badge</span>
+<i class="fa-solid fa-chevron-right text-[9px] text-[#adb5bd]"></i>
+</button>
+</li>
+<li class="">
+<button class="w-full text-left flex items-center justify-between hover:text-[#343a40] transition" type="button">
+<span class="flex items-center gap-2"><i class="fa-solid fa-qrcode text-xs text-[#adb5bd]"></i> Kirim QR WhatsApp</span>
+<i class="fa-solid fa-chevron-right text-[9px] text-[#adb5bd]"></i>
+</button>
+</li>
+<li class="">
+<button class="w-full text-left flex items-center justify-between hover:text-[#ff5252] transition" type="button">
+<span class="flex items-center gap-2"><i class="fa-solid fa-arrow-right-from-bracket text-xs text-[#adb5bd]"></i> Check-out Tamu</span>
+<i class="fa-solid fa-chevron-right text-[9px] text-[#adb5bd]"></i>
+</button>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+<!-- Admin Profile Footer -->
+<div class="p-4 border-t border-[#f1f3f5] bg-white">
+<div class="flex items-center justify-between p-1.5 rounded-lg hover:bg-[#f8f9fa] transition-colors">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-8 h-8 rounded-full bg-[#343a40] border border-[#343a40] flex items-center justify-center font-bold text-xs text-white shadow-sm">AR</div>
+<span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+</div>
+<div class="overflow-hidden">
+<h2 class="text-xs font-semibold text-[#343a40] truncate">Ahmad Rian</h2>
+<p class="text-[11px] text-[#6c757d] truncate">Resepsionis Gd. Bangkit</p>
+</div>
+</div>
+<button aria-label="Pengaturan" class="text-[#adb5bd] hover:text-[#343a40] p-1.5 rounded-md transition-colors" type="button">
+<i class="fa-solid fa-gear text-xs"></i>
+</button>
+</div>
+</div>
+</aside>
+<!-- END: SidebarNavigation -->
+<!-- BEGIN: MainContent -->
+<main class="flex-1 flex flex-col min-w-0 bg-[#f8f9fa]" data-purpose="main-layout">
+<!-- Top App Header Bar -->
+<header class="bg-white border-b border-[#e9ecef] px-8 py-3.5 flex items-center justify-between sticky top-0 z-20">
+<div class="flex items-center gap-3">
+<span class="text-xs text-[#6c757d]">Kampus Utama Telkom University Bandung&nbsp;</span>
+</div>
+<div class="flex items-center gap-3"><button class="px-3 py-1.5 border border-[#343a40]/30 rounded-md text-xs font-semibold text-[#343a40] hover:bg-[#343a40] hover:text-white transition flex items-center gap-1.5" type="button"><i class="fa-solid fa-file-excel text-[#343a40]"></i><span class="">Ekspor XLS</span></button><button class="px-3 py-1.5 border border-[#343a40]/30 rounded-md text-xs font-semibold text-[#343a40] hover:bg-[#343a40] hover:text-white transition flex items-center gap-1.5" type="button"><i class="fa-solid fa-file-pdf text-[#ff5252]"></i><span class="">Unduh PDF</span></button></div>
+</header>
+<div class="p-8 space-y-7 max-w-7xl w-full mx-auto">
+<!-- BEGIN: Minimalist Hero Header Banner -->
+<section class="card-clean overflow-hidden relative p-8 bg-white border border-[#e9ecef] flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm" data-purpose="hero-banner"><div class="absolute right-0 top-0 bottom-0 w-full md:w-2/5 overflow-hidden pointer-events-none opacity-20 md:opacity-25 mask-image-gradient"><img alt="Gedung Landmark Telkom University" class="w-full h-full object-cover object-center filter grayscale contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI0QtDDa2VfFpy91oiheib-rp9eziuEV7C4ndKBs54Q_AXIqKPRUElzU6fBq1KGcUCyfrTLP2Y6_-r0jkBvKB5MoRhLwEUCoOxSd28Gqp2jfPchYCGeMXd8V-NxEV2lwJbkxP1kvxtko_zrv4-6inFh-OgNQ3J712wFTZbUpnBW2c8npSX_XVoarSIctXeIisIefgf8vAu5hpyAkIVtohAigas-PzD8UXv1fPyy537D5LtW1eeNCYnpw"><div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent"></div></div><div class="relative z-10 space-y-2.5 max-w-2xl"><h1 class="text-2xl md:text-3xl font-bold tracking-tight text-[#343a40] leading-tight">Buku Tamu Digital <span class="text-[#ff5252]">Telkom University</span></h1><p class="text-xs md:text-sm text-[#6c757d] max-w-xl font-normal leading-relaxed">Pencatatan dan pemantauan kunjungan kampus terintegrasi dengan akses gedung pintar SITU-KEM dan validasi QR visitor pass.</p></div><div class="relative z-10 flex flex-wrap md:flex-col gap-2.5 shrink-0"><a class="px-4 py-2.5 bg-[#ff5252] hover:bg-[#e03e3e] text-white rounded-lg text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition duration-150" href="#form-registrasi"><i class="fa-solid fa-plus text-xs"></i><span class="">+ Registrasi Tamu Baru</span></a><button class="px-4 py-2.5 bg-[#343a40] hover:bg-[#191b23] text-white border border-[#343a40] rounded-lg text-xs font-semibold shadow-sm flex items-center justify-center gap-2 transition duration-150" type="button"><i class="fa-solid fa-qrcode text-[#ff5252] text-xs"></i><span class="">Scan QR Kunjungan</span></button></div></section>
+<!-- END: HeroBanner -->
+<!-- BEGIN: StatCards -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-purpose="metrics-summary"><div class="card-clean p-5 flex flex-col justify-between"><div class="flex items-center justify-between"><span class="text-xs font-medium text-[#6c757d]">Total Kunjungan Hari Ini</span><div class="w-8 h-8 rounded-lg bg-[#ff5252]/10 text-[#ff5252] flex items-center justify-center text-xs font-semibold"><i class="fa-solid fa-users"></i></div></div><div class="mt-3"><div class="flex items-baseline gap-2"><span class="text-2xl font-bold text-[#ff5252]">128</span><span class="text-xs text-[#6c757d]">Tamu</span></div><div class="flex items-center gap-1 mt-1 text-[11px] text-[#6c757d]"><i class="fa-solid fa-arrow-up text-[#ff5252] text-[10px]"></i><span class="text-[#ff5252] font-semibold">+14%</span><span class="text-[#adb5bd]">dari kemarin</span></div></div></div><div class="card-clean p-5 flex flex-col justify-between"><div class="flex items-center justify-between"><span class="text-xs font-medium text-[#6c757d]">Tamu di Lokasi</span><div class="w-8 h-8 rounded-lg bg-[#f8f9fa] border border-[#e9ecef] text-[#343a40] flex items-center justify-center text-xs"><i class="fa-solid fa-building-user text-[#ff5252]"></i></div></div><div class="mt-3"><div class="flex items-baseline gap-2"><span class="text-2xl font-bold text-[#343a40]">34</span><span class="text-xs text-[#6c757d]">Orang</span></div><div class="inline-flex items-center gap-1.5 mt-1 text-[11px] text-[#6c757d]"><span class="w-1.5 h-1.5 rounded-full bg-[#ff5252]"></span><span class="">Status Aktif</span></div></div></div><div class="card-clean p-5 flex flex-col justify-between"><div class="flex items-center justify-between"><span class="text-xs font-medium text-[#6c757d]">Acara / Kunjungan Spesial</span><div class="w-8 h-8 rounded-lg bg-[#f8f9fa] border border-[#e9ecef] text-[#343a40] flex items-center justify-center text-xs"><i class="fa-solid fa-calendar text-[#ff5252] text-xs"></i></div></div><div class="mt-3"><div class="flex items-baseline gap-2"><span class="text-2xl font-bold text-[#343a40]">4</span><span class="text-xs text-[#6c757d]">Event Kampus</span></div><div class="text-[11px] text-[#adb5bd] mt-1 truncate">Gd. Bangkit &amp; Tokong Nanas</div></div></div><div class="card-clean p-5 flex flex-col justify-between"><div class="flex items-center justify-between"><span class="text-xs font-medium text-[#6c757d]">Rata-rata Durasi Kunjungan</span><div class="w-8 h-8 rounded-lg bg-[#f8f9fa] border border-[#e9ecef] text-[#343a40] flex items-center justify-center text-xs"><i class="fa-solid fa-stopwatch text-[#ff5252] text-xs"></i></div></div><div class="mt-3"><div class="flex items-baseline gap-1"><span class="text-2xl font-bold text-[#343a40]">1</span><span class="text-xs text-[#6c757d]">Jam</span><span class="text-2xl font-bold text-[#343a40] ml-1">45</span><span class="text-xs text-[#6c757d]">Mnt</span></div><div class="text-[11px] text-[#adb5bd] mt-1">Standar: 2 Jam</div></div></div></section>
+<!-- END: StatCards -->
+<!-- BEGIN: SplitMainPanels -->
+<div class="grid grid-cols-1 gap-7">
+<!-- LEFT PANEL: Daftar Tamu & Pengunjung -->
+<section class="card-clean p-6 flex flex-col justify-between col-span-1 w-full" data-purpose="guest-list-table" id="tabel-tamu">
+<div>
+<!-- Table Header Toolbar -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#f1f3f5]">
+<div>
+<h3 class="font-semibold text-base text-[#343a40]">Daftar Tamu &amp; Pengunjung</h3>
+<p class="text-xs text-[#6c757d]">Pemantauan status akses pintu gerbang &amp; resepsionis</p>
+</div>
+<!-- Category filter tabs -->
+<div class="flex flex-wrap items-center gap-1 bg-[#f8f9fa] p-1 rounded-lg border border-[#e9ecef] text-xs"><button class="px-2.5 py-1 bg-[#ff5252] text-white rounded-md shadow-sm font-semibold" type="button">Semua (48)</button><button class="px-2.5 py-1 text-[#343a40] font-medium hover:bg-white rounded-md transition" type="button">Instansi</button><button class="px-2.5 py-1 text-[#343a40] font-medium hover:bg-white rounded-md transition" type="button">Wali Mhs</button><button class="px-2.5 py-1 text-[#343a40] font-medium hover:bg-white rounded-md transition" type="button">Alumni</button><button class="px-2.5 py-1 text-[#343a40] font-medium hover:bg-white rounded-md transition" type="button">Vendor</button></div>
+</div>
+<!-- Table of visitors -->
+<div class="overflow-x-auto mt-2">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-[#dee2e6] text-[11px] font-semibold text-[#343a40] uppercase tracking-wider bg-[#f8f9fa]/60"><th class="py-3 px-3">Nama Tamu &amp; Instansi</th><th class="py-3 px-3">Keperluan &amp; Tujuan</th><th class="py-3 px-3">Waktu Masuk</th><th class="py-3 px-3">Status</th><th class="py-3 px-3 text-right">Aksi</th></tr>
+</thead>
+<tbody class="divide-y divide-[#f1f3f5] text-xs">
+<!-- Row 1 -->
+<tr class="hover:bg-[#f8f9fa] transition-colors">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[#f1f3f5] border border-[#e9ecef] text-[#343a40] flex items-center justify-center font-semibold text-xs">
+                  DN
+                </div>
+<div>
+<div class="font-semibold text-[#343a40]">Dr. Dimas Nugraha</div>
+<div class="text-[11px] text-[#6c757d]">PT Telkom Indonesia (Tbk)</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="font-medium text-[#343a40]">Rapat Kerjasama Riset AI</span>
+<div class="text-[11px] text-[#6c757d]">Rektorat - Gd. Bangkit Lt. 5</div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="text-[#343a40] font-medium">09:15 WIB</div>
+<div class="text-[11px] text-[#adb5bd]">1 jam yang lalu</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-[#f8f9fa] text-[#343a40] border border-[#dee2e6]">
+Checked-In
+                </span>
+</td>
+<td class="py-3.5 px-3 text-right whitespace-nowrap">
+<button class="p-1.5 text-[#adb5bd] hover:text-[#343a40] transition rounded" title="Cetak ID Pass" type="button">
+<i class="fa-solid fa-print"></i>
+</button>
+<button class="p-1.5 text-[#adb5bd] hover:text-[#ff5252] transition rounded ml-1" title="Check-out Tamu" type="button">
+<i class="fa-solid fa-arrow-right-from-bracket"></i>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-[#f8f9fa] transition-colors">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[#f1f3f5] border border-[#e9ecef] text-[#343a40] flex items-center justify-center font-semibold text-xs">
+                  SW
+                </div>
+<div>
+<div class="font-semibold text-[#343a40]">Siti Wahyuni, S.T.</div>
+<div class="text-[11px] text-[#6c757d]">Kementerian Kominfo RI</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="font-medium text-[#343a40]">Narasumber Seminar Digital</span>
+<div class="text-[11px] text-[#6c757d]">Auditorium Tokong Nanas</div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="text-[#343a40] font-medium">09:40 WIB</div>
+<div class="text-[11px] text-[#adb5bd]">45 mnt yang lalu</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-[#f8f9fa] text-[#343a40] border border-[#dee2e6]">
+Checked-In
+                </span>
+</td>
+<td class="py-3.5 px-3 text-right whitespace-nowrap">
+<button class="p-1.5 text-[#adb5bd] hover:text-[#343a40] transition rounded" title="Cetak ID Pass" type="button">
+<i class="fa-solid fa-print"></i>
+</button>
+<button class="p-1.5 text-[#adb5bd] hover:text-[#ff5252] transition rounded ml-1" title="Check-out Tamu" type="button">
+<i class="fa-solid fa-arrow-right-from-bracket"></i>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-[#f8f9fa] transition-colors">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[#f1f3f5] border border-[#e9ecef] text-[#343a40] flex items-center justify-center font-semibold text-xs">
+                  BA
+                </div>
+<div>
+<div class="font-semibold text-[#343a40]">Budi &amp; Arini (Wali Mhs)</div>
+<div class="text-[11px] text-[#6c757d]">Orang Tua Mahasiswa (IF-45)</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="font-medium text-[#343a40]">Konsultasi Nilai Akademik</span>
+<div class="text-[11px] text-[#6c757d]">Fakultas Informatika (FIF)</div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="text-[#343a40] font-medium">10:10 WIB</div>
+<div class="text-[11px] text-[#adb5bd]">15 mnt yang lalu</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-[#fff8e6] text-[#b45309] border border-[#fef3c7]">
+Menunggu
+                </span>
+</td>
+<td class="py-3.5 px-3 text-right whitespace-nowrap">
+<button class="p-1.5 text-[#adb5bd] hover:text-[#343a40] transition rounded" title="Cetak ID Pass" type="button">
+<i class="fa-solid fa-print"></i>
+</button>
+<button class="p-1.5 text-[#adb5bd] hover:text-[#ff5252] transition rounded ml-1" title="Check-out Tamu" type="button">
+<i class="fa-solid fa-arrow-right-from-bracket"></i>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-[#f8f9fa] transition-colors">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[#f1f3f5] border border-[#e9ecef] text-[#343a40] flex items-center justify-center font-semibold text-xs">
+                  RH
+                </div>
+<div>
+<div class="font-semibold text-[#343a40]">Reza Hardian Pratama</div>
+<div class="text-[11px] text-[#6c757d]">PT Cisco Systems Indonesia</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="font-medium text-[#343a40]">Maintenance Perangkat Lab Jarkom</span>
+<div class="text-[11px] text-[#6c757d]">Gd. Fakultas Teknik Elektro (FTE)</div>
+</td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="text-[#343a40] font-medium">08:00 WIB</div>
+<div class="text-[11px] text-[#adb5bd]">Keluar: 09:50 WIB</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-[#f8f9fa] text-[#6c757d] border border-[#dee2e6]">
+Selesai
+                </span>
+</td>
+<td class="py-3.5 px-3 text-right whitespace-nowrap">
+<button class="p-1.5 text-[#adb5bd] hover:text-[#343a40] transition rounded" title="Lihat Detail Riwayat" type="button">
+<i class="fa-solid fa-eye"></i>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Pagination Footer -->
+<div class="pt-4 mt-2 border-t border-[#f1f3f5] flex flex-col sm:flex-row items-center justify-between text-xs text-[#6c757d] gap-2">
+<span class="">Menampilkan <strong>4</strong> dari <strong>48</strong> data</span>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded-md border border-[#e9ecef] hover:bg-[#f8f9fa] disabled:opacity-40 text-[#6c757d]" disabled="" type="button">Sebelumnya</button>
+<button class="px-2.5 py-1 rounded-md bg-[#ff5252] text-white font-medium shadow-sm" type="button">1</button>
+<button class="px-2.5 py-1 rounded-md border border-[#e9ecef] hover:bg-[#f8f9fa] text-[#6c757d]" type="button">2</button>
+<button class="px-2.5 py-1 rounded-md border border-[#e9ecef] hover:bg-[#f8f9fa] text-[#6c757d]" type="button">3</button>
+<button class="px-2.5 py-1 rounded-md border border-[#e9ecef] hover:bg-[#f8f9fa] text-[#6c757d]" type="button">Berikutnya</button>
+</div>
+</div>
+</section>
+<!-- RIGHT PANEL: Formulir Check-In & Gate Pass -->
+</div>
+<!-- END: SplitMainPanels -->
+</div>
+<!-- Application Footer -->
+<footer class="mt-auto px-8 py-5 border-t border-[#e9ecef] bg-white flex flex-col sm:flex-row items-center justify-between text-xs text-[#adb5bd] gap-2">
+<div class="">
+      © 2024 <strong class="text-[#6c757d]">Telkom University</strong>&nbsp;- Sistem Informasi Terpadu (SITU-KEM).
+    </div>
+<div class="flex items-center gap-4 text-[#6c757d]">
+<a class="hover:text-[#343a40] transition" href="#">Bantuan Resepsionis</a>
+<span class="">•</span>
+<a class="hover:text-[#343a40] transition" href="#">Prosedur Keamanan</a>
+<span class="">•</span>
+<a class="hover:text-[#343a40] transition" href="#">v2.4.0</a>
+</div>
+</footer>
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: InteractiveScripts -->
+<script data-purpose="live-clock">
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const clockElement = document.getElementById('liveClock');
+      if (clockElement) {
+        clockElement.textContent = `${hours}:${minutes}:${seconds} WIB`;
+      }
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+<script data-purpose="guest-form-interactions">
+    const nameInput = document.getElementById('guestName');
+    const destinationSelect = document.getElementById('guestPurpose');
+    const previewName = document.getElementById('previewName');
+    const previewDestination = document.getElementById('previewDestination');
+
+    if (nameInput && previewName) {
+      nameInput.addEventListener('input', function() {
+        previewName.textContent = this.value.trim() ? this.value : 'Tamu Terdaftar: (Isi Formulir)';
+      });
+    }
+
+    if (destinationSelect && previewDestination) {
+      destinationSelect.addEventListener('change', function() {
+        const selectedText = destinationSelect.options[destinationSelect.selectedIndex].text;
+        previewDestination.textContent = 'Tujuan: ' + selectedText;
+      });
+    }
+
+    window.simulasiRegistrasiTamu = function() {
+      const nama = nameInput.value;
+      if (!nama) return;
+
+      alert(`Registrasi Berhasil!\n\nNama Tamu: ${nama}\nID Card Pass telah siap dicetak dan QR Code digital telah diterbitkan untuk akses pintu gate.`);
+    };
+  </script>
+<!-- END: InteractiveScripts -->
+
+
+</body></html>
