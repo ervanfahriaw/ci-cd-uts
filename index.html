@@ -159,13 +159,12 @@
               <span id="sidebarCountBadge" class="bg-[#f1f3f5] text-[#343a40] text-[10px] font-semibold px-2 py-0.5 rounded-full border border-[#dee2e6]">0</span>
             </button>
 
-            <!-- 4. RIWAYAT & INFRASTRUKTUR LINK -->
+            <!-- 4. PANDUAN KUNJUNGAN LINK -->
             <button id="nav-riwayat" onclick="switchView('riwayat')" class="w-full text-left flex items-center justify-between px-3 py-2 text-xs font-medium text-[#6c757d] hover:text-[#343a40] hover:bg-[#f8f9fa] rounded-lg transition-colors group">
               <span class="flex items-center gap-2.5">
-                <i class="fa-solid fa-clock-rotate-left text-xs text-[#adb5bd] group-hover:text-[#343a40]"></i>
-                Riwayat &amp; Server
+                <i class="fa-solid fa-circle-info text-xs text-[#adb5bd] group-hover:text-[#343a40]"></i>
+                Panduan Kunjungan
               </span>
-              <span class="w-2 h-2 rounded-full bg-emerald-500" title="Server UP"></span>
             </button>
           </div>
         </div>
@@ -228,7 +227,7 @@
         <div class="flex items-center gap-3">
           <div class="relative">
             <div class="w-8 h-8 rounded-full bg-[#343a40] border border-[#343a40] flex items-center justify-center font-bold text-xs text-white shadow-sm">EF</div>
-            <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+            <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-[#ff5252] ring-2 ring-white"></span>
           </div>
           <div class="overflow-hidden">
             <h2 class="text-xs font-semibold text-[#343a40] truncate">Ervan Fahri</h2>
@@ -253,17 +252,16 @@
       <div class="flex items-center gap-3">
         <span class="text-xs text-[#6c757d]">Kampus Utama Telkom University Bandung</span>
         <span class="text-xs text-[#dee2e6]">•</span>
-        <!-- Connection Badge -->
-        <span id="backendBadge" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          Backend Ready
+        <span id="backendBadge" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-[#fff1f1] text-[#ff5252] border border-[#fed7d7]">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#ff5252] animate-pulse"></span>
+          Layanan Aktif
         </span>
         <span id="liveClock" class="hidden sm:inline-block text-xs font-mono font-medium text-[#6c757d] bg-[#f8f9fa] px-2 py-0.5 rounded border border-[#e9ecef]">--:--:-- WIB</span>
       </div>
 
       <div class="flex items-center gap-3">
         <button onclick="eksporDataXLS()" class="px-3 py-1.5 border border-[#343a40]/30 rounded-md text-xs font-semibold text-[#343a40] hover:bg-[#343a40] hover:text-white transition flex items-center gap-1.5" type="button">
-          <i class="fa-solid fa-file-excel text-[#10b981]"></i>
+          <i class="fa-solid fa-file-excel text-[#343a40]"></i>
           <span>Ekspor XLS</span>
         </button>
         <button onclick="unduhDataPDF()" class="px-3 py-1.5 border border-[#343a40]/30 rounded-md text-xs font-semibold text-[#343a40] hover:bg-[#343a40] hover:text-white transition flex items-center gap-1.5" type="button">
@@ -292,13 +290,13 @@
           </div>
           <div class="relative z-10 space-y-2.5 max-w-2xl">
             <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-[10px] font-semibold bg-[#fff1f1] text-[#ff5252] border border-[#fed7d7]">
-              <i class="fa-solid fa-shield-halved text-xs"></i> Cloud Computing Chunin Exam
+              <i class="fa-solid fa-building-columns text-xs"></i> Sistem Informasi Terpadu (SITU-KEM)
             </div>
             <h1 class="text-2xl md:text-3xl font-bold tracking-tight text-[#343a40] leading-tight">
               Buku Tamu Digital <span class="text-[#ff5252]">Telkom University</span>
             </h1>
             <p class="text-xs md:text-sm text-[#6c757d] max-w-xl font-normal leading-relaxed">
-              Pencatatan dan pemantauan kunjungan kampus terintegrasi dengan akses gedung pintar SITU-KEM dan validasi QR visitor pass. Dilengkapi persistensi Docker Named Volume dan automated CI/CD pipeline.
+              Pencatatan dan pemantauan kunjungan kampus terintegrasi dengan akses gedung pintar SITU-KEM dan validasi QR visitor pass resmi Telkom University.
             </p>
           </div>
           <div class="relative z-10 flex flex-wrap md:flex-col gap-2.5 shrink-0">
@@ -329,9 +327,9 @@
                 <span class="text-xs text-[#6c757d]">Tamu</span>
               </div>
               <div class="flex items-center gap-1 mt-1 text-[11px] text-[#6c757d]">
-                <i class="fa-solid fa-circle-check text-emerald-500 text-[10px]"></i>
-                <span class="text-emerald-600 font-semibold">Terdata Aktif</span>
-                <span class="text-[#adb5bd]">di database JSON</span>
+                <i class="fa-solid fa-arrow-up text-[#ff5252] text-[10px]"></i>
+                <span class="text-[#ff5252] font-semibold">+14%</span>
+                <span class="text-[#adb5bd]">dari kemarin</span>
               </div>
             </div>
           </div>
@@ -339,7 +337,7 @@
           <!-- Card 2 -->
           <div class="card-clean p-5 flex flex-col justify-between">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-medium text-[#6c757d]">Tamu di Lokasi (Checked-In)</span>
+              <span class="text-xs font-medium text-[#6c757d]">Tamu di Lokasi</span>
               <div class="w-8 h-8 rounded-lg bg-[#f8f9fa] border border-[#e9ecef] text-[#343a40] flex items-center justify-center text-xs">
                 <i class="fa-solid fa-building-user text-[#ff5252]"></i>
               </div>
@@ -351,7 +349,7 @@
               </div>
               <div class="inline-flex items-center gap-1.5 mt-1 text-[11px] text-[#6c757d]">
                 <span class="w-1.5 h-1.5 rounded-full bg-[#ff5252]"></span>
-                <span>Status Aktif Kampus</span>
+                <span>Status Aktif</span>
               </div>
             </div>
           </div>
@@ -359,34 +357,36 @@
           <!-- Card 3 -->
           <div class="card-clean p-5 flex flex-col justify-between">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-medium text-[#6c757d]">Instansi / Mitra Terdata</span>
+              <span class="text-xs font-medium text-[#6c757d]">Acara &amp; Kunjungan Kampus</span>
               <div class="w-8 h-8 rounded-lg bg-[#f8f9fa] border border-[#e9ecef] text-[#343a40] flex items-center justify-center text-xs">
-                <i class="fa-solid fa-landmark text-[#ff5252] text-xs"></i>
+                <i class="fa-solid fa-calendar text-[#ff5252] text-xs"></i>
               </div>
             </div>
             <div class="mt-3">
               <div class="flex items-baseline gap-2">
                 <span id="statInstitutions" class="text-2xl font-bold text-[#343a40]">0</span>
-                <span class="text-xs text-[#6c757d]">Institusi</span>
+                <span class="text-xs text-[#6c757d]">Instansi</span>
               </div>
-              <div class="text-[11px] text-[#adb5bd] mt-1 truncate">Akademik, Kementerian &amp; Industri</div>
+              <div class="text-[11px] text-[#adb5bd] mt-1 truncate">Gd. Bangkit &amp; Tokong Nanas</div>
             </div>
           </div>
 
           <!-- Card 4 -->
           <div class="card-clean p-5 flex flex-col justify-between">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-medium text-[#6c757d]">Data Immunity (Volume)</span>
+              <span class="text-xs font-medium text-[#6c757d]">Rata-rata Durasi Kunjungan</span>
               <div class="w-8 h-8 rounded-lg bg-[#f8f9fa] border border-[#e9ecef] text-[#343a40] flex items-center justify-center text-xs">
-                <i class="fa-solid fa-shield-virus text-[#ff5252] text-xs"></i>
+                <i class="fa-solid fa-stopwatch text-[#ff5252] text-xs"></i>
               </div>
             </div>
             <div class="mt-3">
               <div class="flex items-baseline gap-1">
-                <span class="text-2xl font-bold text-emerald-600">100%</span>
-                <span class="text-xs text-[#6c757d]">Kebal</span>
+                <span class="text-2xl font-bold text-[#343a40]">1</span>
+                <span class="text-xs text-[#6c757d]">Jam</span>
+                <span class="text-2xl font-bold text-[#343a40] ml-1">45</span>
+                <span class="text-xs text-[#6c757d]">Mnt</span>
               </div>
-              <div class="text-[11px] text-[#adb5bd] mt-1">guestbook-db-data (Volume)</div>
+              <div class="text-[11px] text-[#adb5bd] mt-1">Standar Layanan: 2 Jam</div>
             </div>
           </div>
         </section>
@@ -458,22 +458,22 @@
               </div>
             </div>
 
-            <!-- Server & Volume Immunity Card -->
+            <!-- Reception & Visitor Support Card -->
             <div class="card-clean p-6 bg-gradient-to-br from-white to-[#f8f9fa]">
               <div class="flex items-center gap-2.5 mb-2">
-                <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs">
-                  <i class="fa-solid fa-server"></i>
+                <div class="w-7 h-7 rounded-lg bg-[#fff1f1] text-[#ff5252] flex items-center justify-center text-xs">
+                  <i class="fa-solid fa-headset"></i>
                 </div>
                 <div>
-                  <h4 class="font-semibold text-xs text-[#343a40]">Infrastruktur Docker Aktif</h4>
-                  <p class="text-[10px] text-[#6c757d]">Bridge Network: app-net</p>
+                  <h4 class="font-semibold text-xs text-[#343a40]">Layanan Resepsionis Kampus</h4>
+                  <p class="text-[10px] text-[#6c757d]">Lobi Utama Gd. Bangkit &amp; Rektorat</p>
                 </div>
               </div>
               <p class="text-[11px] text-[#6c757d] leading-relaxed mb-3">
-                Penyimpanan tersinkronisasi di <strong>Named Volume</strong> <code class="text-[10px] bg-white px-1.5 py-0.5 rounded border border-[#e9ecef]">guestbook-db-data</code> yang terlindungi dari penghancuran kontainer.
+                Untuk panduan ruangan rapat, agenda seminar, parkir tamu, dan penerbitan kartu identitas khusus, silakan hubungi meja resepsionis di lobi gedung utama.
               </p>
               <button onclick="switchView('riwayat')" class="w-full text-center py-1.5 px-3 bg-white border border-[#dee2e6] hover:bg-[#f8f9fa] rounded-lg text-xs font-semibold text-[#343a40] transition">
-                Periksa Status Server &amp; Storage
+                Lihat Panduan &amp; Tata Tertib Kunjungan
               </button>
             </div>
           </div>
@@ -622,7 +622,7 @@
                     <p class="text-[9px] text-[#adb5bd] uppercase tracking-wider">Visitor Gate Pass</p>
                   </div>
                 </div>
-                <span class="text-[9px] font-semibold px-2 py-0.5 rounded bg-emerald-100 text-emerald-700">
+                <span class="text-[9px] font-semibold px-2 py-0.5 rounded bg-[#fff1f1] text-[#ff5252] border border-[#fed7d7]">
                   LIVE PREVIEW
                 </span>
               </div>
@@ -677,7 +677,7 @@
             <!-- Quick Hint -->
             <div class="p-3 bg-white rounded-lg border border-[#e9ecef] text-[11px] text-[#6c757d]">
               <i class="fa-solid fa-circle-info text-[#ff5252] mr-1"></i>
-              Data yang dikirim akan langsung tersimpan atomik di backend Python stdlib dan diamankan dalam Docker Named Volume.
+              Data kunjungan Anda terdaftar secara resmi pada gerbang akses gedung pintar Telkom University.
             </div>
           </div>
         </div>
@@ -783,7 +783,7 @@
 
 
       <!-- ==================================================== -->
-      <!-- VIEW 4: RIWAYAT & STATUS SERVER / DATA IMMUNITY      -->
+      <!-- VIEW 4: PANDUAN & TATA TERTIB KUNJUNGAN KAMPUS       -->
       <!-- ==================================================== -->
       <div id="view-riwayat" class="hidden space-y-7">
         
@@ -793,101 +793,124 @@
             <div class="flex items-center gap-2 text-xs text-[#adb5bd] mb-1">
               <button onclick="switchView('dashboard')" class="hover:text-[#343a40]">Menu Utama</button>
               <i class="fa-solid fa-chevron-right text-[9px]"></i>
-              <span class="text-[#ff5252] font-medium">Riwayat Kunjungan &amp; Infrastruktur</span>
+              <span class="text-[#ff5252] font-medium">Panduan Kunjungan</span>
             </div>
-            <h2 class="text-xl font-bold text-[#343a40]">Status Layanan Cloud &amp; Persistensi Storage</h2>
-            <p class="text-xs text-[#6c757d]">Informasi arsitektur kontainerisasi, CI/CD pipeline, dan pengujian kebal data</p>
+            <h2 class="text-xl font-bold text-[#343a40]">Panduan &amp; Tata Tertib Kunjungan Kampus</h2>
+            <p class="text-xs text-[#6c757d]">Informasi alur penerimaan tamu, tata tertib keamanan, dan layanan resepsionis Telkom University</p>
           </div>
 
-          <button onclick="checkHealthLive()" class="px-3 py-1.5 bg-[#343a40] hover:bg-[#191b23] text-white rounded-md text-xs font-semibold flex items-center gap-1.5 transition">
-            <i class="fa-solid fa-stethoscope text-xs text-[#ff5252]"></i>
-            <span>Test Health Endpoint</span>
+          <button onclick="switchView('registrasi')" class="px-4 py-2 bg-[#ff5252] hover:bg-[#e03e3e] text-white rounded-md text-xs font-semibold shadow-sm flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-user-plus text-xs"></i>
+            <span>Mulai Registrasi Tamu</span>
           </button>
         </div>
 
-        <!-- Infrastructure Cards Grid -->
+        <!-- Information Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <!-- Card 1: Backend Container -->
-          <div class="card-clean p-6">
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-semibold text-[#343a40]">Backend REST API</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-100 text-emerald-700">Port 8000</span>
+          <!-- Card 1: Alur Check-In -->
+          <div class="card-clean p-6 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-[#fff1f1] text-[#ff5252] flex items-center justify-center text-base mb-4">
+                <i class="fa-solid fa-id-badge"></i>
+              </div>
+              <h3 class="font-bold text-sm text-[#343a40] mb-2">1. Alur Registrasi Masuk</h3>
+              <p class="text-xs text-[#6c757d] leading-relaxed">
+                Setiap pengunjung diwajibkan mendaftarkan identitas di meja resepsionis lobi utama sebelum memasuki kawasan gedung kampus dan menerima Visitor Gate Pass resmi.
+              </p>
             </div>
-            <div class="space-y-2 text-xs text-[#6c757d]">
-              <div class="flex justify-between">
-                <span>Kontainer:</span>
-                <strong class="text-[#343a40]">guestbook-backend</strong>
-              </div>
-              <div class="flex justify-between">
-                <span>Teknologi:</span>
-                <strong class="text-[#343a40]">Python 3.11-alpine (stdlib)</strong>
-              </div>
-              <div class="flex justify-between">
-                <span>Status Endpoint:</span>
-                <span id="backendHealthText" class="text-emerald-600 font-semibold">200 OK (UP)</span>
-              </div>
+            <div class="pt-4 mt-3 border-t border-[#f1f3f5] text-[11px] text-[#adb5bd]">
+              Penerbitan kartu akses otomatis SITU-KEM
             </div>
           </div>
 
-          <!-- Card 2: Frontend Nginx -->
-          <div class="card-clean p-6">
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-semibold text-[#343a40]">Frontend &amp; Reverse Proxy</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-100 text-blue-700">Port 8081</span>
+          <!-- Card 2: Tata Tertib Keamanan -->
+          <div class="card-clean p-6 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-[#f8f9fa] border border-[#e9ecef] text-[#343a40] flex items-center justify-center text-base mb-4">
+                <i class="fa-solid fa-shield-halved text-[#ff5252]"></i>
+              </div>
+              <h3 class="font-bold text-sm text-[#343a40] mb-2">2. Tata Tertib &amp; Keamanan</h3>
+              <p class="text-xs text-[#6c757d] leading-relaxed">
+                Tanda pengenal tamu wajib selalu dikenakan dan terlihat jelas selama berada di area kampus. Tamu diharapkan mematuhi zona batas akses laboratorium dan ruang kerja.
+              </p>
             </div>
-            <div class="space-y-2 text-xs text-[#6c757d]">
-              <div class="flex justify-between">
-                <span>Kontainer:</span>
-                <strong class="text-[#343a40]">guestbook-frontend</strong>
-              </div>
-              <div class="flex justify-between">
-                <span>Teknologi:</span>
-                <strong class="text-[#343a40]">Nginx:alpine</strong>
-              </div>
-              <div class="flex justify-between">
-                <span>Bind Mount:</span>
-                <strong class="text-emerald-600">index.html (Live)</strong>
-              </div>
+            <div class="pt-4 mt-3 border-t border-[#f1f3f5] text-[11px] text-[#adb5bd]">
+              Prosedur keamanan terpadu kampus
             </div>
           </div>
 
-          <!-- Card 3: Named Volume Immunity -->
-          <div class="card-clean p-6">
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-semibold text-[#343a40]">Docker Named Volume</span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-purple-100 text-purple-700">Persisten</span>
+          <!-- Card 3: Jam Layanan Resepsionis -->
+          <div class="card-clean p-6 flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-[#f8f9fa] border border-[#e9ecef] text-[#343a40] flex items-center justify-center text-base mb-4">
+                <i class="fa-solid fa-clock text-[#ff5252]"></i>
+              </div>
+              <h3 class="font-bold text-sm text-[#343a40] mb-2">3. Jam Operasional Layanan</h3>
+              <p class="text-xs text-[#6c757d] leading-relaxed">
+                Meja resepsionis dan pintu akses tamu melayani pada hari Senin hingga Jumat pukul 07.30 – 17.00 WIB, dan Sabtu pukul 08.00 – 13.00 WIB untuk agenda resmi kampus.
+              </p>
             </div>
-            <div class="space-y-2 text-xs text-[#6c757d]">
-              <div class="flex justify-between">
-                <span>Volume:</span>
-                <strong class="text-[#343a40]">guestbook-db-data</strong>
-              </div>
-              <div class="flex justify-between">
-                <span>Path Target:</span>
-                <strong class="text-[#343a40]">/var/lib/backend_data</strong>
-              </div>
-              <div class="flex justify-between">
-                <span>Uji Kebal:</span>
-                <strong class="text-emerald-600">docker rm -f OK</strong>
-              </div>
+            <div class="pt-4 mt-3 border-t border-[#f1f3f5] text-[11px] text-[#adb5bd]">
+              Layanan gerbang utama Gd. Bangkit
             </div>
           </div>
         </div>
 
-        <!-- Raw JSON Storage Viewer -->
-        <div class="card-clean p-6">
-          <div class="flex items-center justify-between pb-3 border-b border-[#f1f3f5] mb-3">
-            <div>
-              <h3 class="font-semibold text-sm text-[#343a40]">Isi Berkas Persisten (guestbook.json)</h3>
-              <p class="text-xs text-[#6c757d]">Data mentah yang tersimpan langsung di dalam volume Docker</p>
-            </div>
-            <button onclick="salinJSONMentah()" class="px-3 py-1 bg-[#f8f9fa] border border-[#dee2e6] hover:bg-white text-xs font-medium text-[#343a40] rounded transition flex items-center gap-1.5">
-              <i class="fa-regular fa-copy text-xs"></i>
-              <span>Salin JSON</span>
-            </button>
+        <!-- Directory & Contact Helpdesk -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="card-clean p-6">
+            <h3 class="font-bold text-sm text-[#343a40] mb-3 flex items-center gap-2">
+              <i class="fa-solid fa-building text-[#ff5252]"></i>
+              <span>Direktori Lokasi Kunjungan Kampus</span>
+            </h3>
+            <ul class="space-y-2.5 text-xs text-[#6c757d]">
+              <li class="flex items-start gap-2.5 p-2.5 bg-[#f8f9fa] rounded-lg border border-[#e9ecef]">
+                <span class="w-2 h-2 rounded-full bg-[#ff5252] mt-1.5 flex-shrink-0"></span>
+                <div>
+                  <strong class="text-[#343a40]">Gedung Bangkit (Rektorat)</strong>
+                  <div class="text-[11px] text-[#adb5bd]">Lobi Resepsionis Utama, Kantor Pimpinan &amp; Administrasi Pusat</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-2.5 p-2.5 bg-[#f8f9fa] rounded-lg border border-[#e9ecef]">
+                <span class="w-2 h-2 rounded-full bg-[#ff5252] mt-1.5 flex-shrink-0"></span>
+                <div>
+                  <strong class="text-[#343a40]">Auditorium Tokong Nanas</strong>
+                  <div class="text-[11px] text-[#adb5bd]">Sidang Terbuka, Wisuda, Seminar Nasional &amp; Pameran Inovasi</div>
+                </div>
+              </li>
+              <li class="flex items-start gap-2.5 p-2.5 bg-[#f8f9fa] rounded-lg border border-[#e9ecef]">
+                <span class="w-2 h-2 rounded-full bg-[#ff5252] mt-1.5 flex-shrink-0"></span>
+                <div>
+                  <strong class="text-[#343a40]">Gedung Fakultas &amp; Laboratorium</strong>
+                  <div class="text-[11px] text-[#adb5bd]">FIF, FTE, FRI, FEB, FKB, FIK, FIT, serta Laboratorium Riset</div>
+                </div>
+              </li>
+            </ul>
           </div>
 
-          <pre id="rawJsonViewer" class="p-4 bg-[#1e222d] text-emerald-400 font-mono text-xs rounded-lg overflow-x-auto max-h-72">Memuat JSON...</pre>
+          <div class="card-clean p-6">
+            <h3 class="font-bold text-sm text-[#343a40] mb-3 flex items-center gap-2">
+              <i class="fa-solid fa-phone-volume text-[#ff5252]"></i>
+              <span>Bantuan &amp; Kontak Resepsionis</span>
+            </h3>
+            <p class="text-xs text-[#6c757d] leading-relaxed mb-4">
+              Apabila membutuhkan bantuan koordinasi penerimaan tamu khusus, delegasi kementerian, atau pengantaran rombongan studi banding, silakan hubungi tim resepsionis kampus:
+            </p>
+            <div class="space-y-2 text-xs">
+              <div class="flex items-center justify-between p-2.5 bg-[#f8f9fa] rounded-lg border border-[#e9ecef]">
+                <span class="text-[#6c757d]">Telepon Hotline:</span>
+                <strong class="text-[#343a40] font-mono">(022) 7564108 ext. 101</strong>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-[#f8f9fa] rounded-lg border border-[#e9ecef]">
+                <span class="text-[#6c757d]">Email Resepsionis:</span>
+                <strong class="text-[#343a40] font-mono">resepsionis@telkomuniversity.ac.id</strong>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-[#f8f9fa] rounded-lg border border-[#e9ecef]">
+                <span class="text-[#6c757d]">Lokasi Meja Informasi:</span>
+                <strong class="text-[#343a40]">Lobi Gedung Bangkit Lantai 1</strong>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -1013,7 +1036,7 @@
         Simulasi validasi scanner gerbang gedung Bangkit &amp; Rektorat Telkom University.
       </p>
 
-      <button onclick="simulasiScanSukses()" class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold transition">
+      <button onclick="simulasiScanSukses()" class="w-full py-2 bg-[#ff5252] hover:bg-[#e03e3e] text-white rounded-lg text-xs font-semibold transition">
         Simulasi QR Terbaca (Valid)
       </button>
     </div>
@@ -1195,7 +1218,7 @@
           </td>
           <td class="py-3.5 px-3 whitespace-nowrap">
             <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-[#f8f9fa] text-[#343a40] border border-[#dee2e6]">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-[#ff5252]"></span>
               Checked-In
             </span>
           </td>
@@ -1598,11 +1621,11 @@
       const badge = document.getElementById('backendBadge');
       if (!badge) return;
       if (isReady) {
-        badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200';
-        badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Backend Ready`;
+        badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-[#fff1f1] text-[#ff5252] border border-[#fed7d7]';
+        badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-[#ff5252] animate-pulse"></span>Layanan Aktif`;
       } else {
-        badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-red-50 text-red-700 border border-red-200';
-        badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>Backend Terputus`;
+        badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-[#f8f9fa] text-[#6c757d] border border-[#dee2e6]';
+        badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-[#adb5bd]"></span>Layanan Offline`;
       }
     }
 
@@ -1647,9 +1670,9 @@
       const toast = document.createElement('div');
       toast.className = `p-3 rounded-lg shadow-lg text-xs font-semibold text-white pointer-events-auto flex items-center justify-between gap-3 transition-all duration-300 transform translate-y-2 opacity-0`;
 
-      if (type === 'success') toast.classList.add('bg-emerald-600');
-      else if (type === 'error') toast.classList.add('bg-red-600');
-      else if (type === 'warning') toast.classList.add('bg-amber-600');
+      if (type === 'success') toast.classList.add('bg-[#343a40]');
+      else if (type === 'error') toast.classList.add('bg-[#ff5252]');
+      else if (type === 'warning') toast.classList.add('bg-[#ff5252]');
       else toast.classList.add('bg-[#343a40]');
 
       toast.innerHTML = `
