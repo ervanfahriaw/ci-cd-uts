@@ -113,13 +113,8 @@
       <!-- Brand Header -->
       <div class="px-6 py-5 border-b border-[#f1f3f5] flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-lg bg-white border border-[#dee2e6] flex items-center justify-center shadow-sm p-1 flex-shrink-0">
-            <svg class="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 4C19 4 15 8.5 15 14C15 20.5 24 30 24 30C24 30 33 20.5 33 14C33 8.5 29 4 24 4Z" fill="#e01a3f"></path>
-              <path d="M24 44C16 38 10 28 10 18H14C14 26 19 34 24 38C29 34 34 26 34 18H38C38 28 32 38 24 44Z" fill="#ff5252"></path>
-              <circle cx="24" cy="14" r="4.5" fill="#ffffff"></circle>
-              <path d="M24 20C21.5 20 19 23 19 26C21.5 25 24 27 24 27C24 27 26.5 25 29 26C29 23 26.5 20 24 20Z" fill="#ffffff"></path>
-            </svg>
+          <div class="w-8 h-8 rounded-lg bg-white border border-[#dee2e6] flex items-center justify-center shadow-sm overflow-hidden flex-shrink-0">
+            <img src="design/logo.jpg" alt="Logo Telkom University" class="w-full h-full object-contain">
           </div>
           <div>
             <h1 class="text-sm font-semibold text-[#343a40] leading-tight tracking-tight">Buku Tamu</h1>
@@ -127,9 +122,6 @@
           </div>
         </div>
         <div class="flex items-center gap-1">
-          <button id="btnSidebarMore" aria-label="Menu opsi" class="text-[#6c757d] hover:text-[#343a40] p-1.5 rounded-md transition-colors" type="button" onclick="switchView('riwayat')">
-            <i class="fa-solid fa-server text-xs" title="Status Server"></i>
-          </button>
           <button onclick="toggleSidebar()" class="text-[#adb5bd] hover:text-[#343a40] p-1.5 rounded-md transition-colors cursor-pointer" aria-label="Sembunyikan navigasi" title="Sembunyikan menu navigasi" type="button">
             <i class="fa-solid fa-chevron-left text-xs hidden xl:inline" title="Sembunyikan menu"></i>
             <i class="fa-solid fa-xmark text-sm xl:hidden inline" title="Tutup menu"></i>
