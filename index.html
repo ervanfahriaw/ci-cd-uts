@@ -88,17 +88,27 @@
       mask-image: linear-gradient(to left, black 50%, transparent 100%);
       -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);
     }
+    @media (min-width: 1280px) {
+      #sidebarNav {
+        transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease-in-out;
+      }
+      #sidebarNav.sidebar-desktop-hidden {
+        margin-left: -16rem !important;
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen text-[#343a40] antialiased flex flex-col xl:flex-row overflow-x-hidden bg-[#f8f9fa]">
 
   <!-- Mobile Sidebar Backdrop Overlay -->
-  <div id="sidebarBackdrop" onclick="closeMobileSidebar()" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 hidden xl:hidden transition-opacity"></div>
+  <div id="sidebarBackdrop" onclick="closeSidebar()" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 hidden xl:hidden transition-opacity"></div>
 
   <!-- ========================================== -->
   <!-- BEGIN: SIDEBAR NAVIGATION                  -->
   <!-- ========================================== -->
-  <aside id="sidebarNav" class="fixed inset-y-0 left-0 w-72 max-w-[85vw] bg-white border-r border-[#e9ecef] flex-shrink-0 flex flex-col justify-between z-50 transform -translate-x-full xl:translate-x-0 xl:static xl:w-64 xl:h-screen xl:sticky xl:top-0 transition-transform duration-300 ease-in-out shadow-2xl xl:shadow-none overflow-y-auto" data-purpose="sidebar">
+  <aside id="sidebarNav" class="fixed inset-y-0 left-0 w-72 max-w-[85vw] bg-white border-r border-[#e9ecef] flex-shrink-0 flex flex-col justify-between z-50 transform -translate-x-full xl:translate-x-0 xl:static xl:w-64 xl:h-screen xl:sticky xl:top-0 transition-all duration-300 ease-in-out shadow-2xl xl:shadow-none overflow-y-auto" data-purpose="sidebar">
     <div>
       <!-- Brand Header -->
       <div class="px-6 py-5 border-b border-[#f1f3f5] flex items-center justify-between">
@@ -120,8 +130,9 @@
           <button id="btnSidebarMore" aria-label="Menu opsi" class="text-[#6c757d] hover:text-[#343a40] p-1.5 rounded-md transition-colors" type="button" onclick="switchView('riwayat')">
             <i class="fa-solid fa-server text-xs" title="Status Server"></i>
           </button>
-          <button onclick="closeMobileSidebar()" class="xl:hidden text-[#adb5bd] hover:text-[#343a40] p-1.5 rounded-md transition-colors" aria-label="Tutup menu" type="button">
-            <i class="fa-solid fa-xmark text-sm"></i>
+          <button onclick="toggleSidebar()" class="text-[#adb5bd] hover:text-[#343a40] p-1.5 rounded-md transition-colors cursor-pointer" aria-label="Sembunyikan navigasi" title="Sembunyikan menu navigasi" type="button">
+            <i class="fa-solid fa-chevron-left text-xs hidden xl:inline" title="Sembunyikan menu"></i>
+            <i class="fa-solid fa-xmark text-sm xl:hidden inline" title="Tutup menu"></i>
           </button>
         </div>
       </div>
@@ -270,9 +281,9 @@
     <!-- Top App Header Bar -->
     <header class="bg-white border-b border-[#e9ecef] px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between sticky top-0 z-20 gap-3">
       <div class="flex items-center gap-3">
-        <!-- Hamburger Button for Mobile / Tablet -->
-        <button id="btnHamburger" onclick="toggleMobileSidebar()" class="xl:hidden p-1.5 -ml-1 text-[#343a40] hover:text-[#ff5252] hover:bg-[#f8f9fa] rounded-lg border border-[#e9ecef] transition" aria-label="Menu navigasi" type="button">
-          <i id="hamburgerIcon" class="fa-solid fa-bars text-sm"></i>
+        <!-- Hamburger Button for ALL screens (Desktop & Mobile) -->
+        <button id="btnHamburger" onclick="toggleSidebar()" class="p-2 -ml-1 text-[#343a40] hover:text-[#ff5252] hover:bg-[#f8f9fa] rounded-lg border border-[#dee2e6] transition flex items-center justify-center cursor-pointer shadow-sm group" aria-label="Toggle menu navigasi" title="Sembunyikan / Tampilkan Menu Navigasi" type="button">
+          <i id="hamburgerIcon" class="fa-solid fa-bars text-sm group-hover:scale-110 transition-transform"></i>
         </button>
         <span class="text-xs text-[#6c757d]">Kampus Utama Telkom University Bandung</span>
       </div>
@@ -1080,6 +1091,17 @@
         { key: 'cat-rektorat', btnId: 'nav-cat-rektorat', isCat: true }
       ];
 
+      const baseIconClass = {
+        'nav-dashboard': 'fa-solid fa-gauge-high text-xs',
+        'nav-registrasi': 'fa-solid fa-user-plus text-xs',
+        'nav-daftar-tamu': 'fa-solid fa-address-book text-xs',
+        'nav-riwayat': 'fa-solid fa-circle-info text-xs',
+        'nav-cat-seminar': 'fa-solid fa-graduation-cap text-xs w-4 text-center',
+        'nav-cat-industri': 'fa-solid fa-building-user text-xs w-4 text-center',
+        'nav-cat-wisuda': 'fa-solid fa-award text-xs w-4 text-center',
+        'nav-cat-rektorat': 'fa-solid fa-landmark text-xs w-4 text-center'
+      };
+
       allNavItems.forEach(item => {
         const btn = document.getElementById(item.btnId);
         if (!btn) return;
@@ -1092,8 +1114,8 @@
         if (item.key === activeKey) {
           // Highlight MERAH aktif hanya untuk menu / kategori yang dipilih
           btn.className = `w-full text-left ${flexLayout} px-3 py-2 text-xs font-semibold text-white bg-[#ff5252] rounded-lg shadow-sm transition-colors group nav-btn-active`;
-          if (icon) {
-            icon.className = icon.className.replace(/text-\[[^\]]+\]|text-white/g, '').trim() + ' text-white';
+          if (icon && baseIconClass[item.btnId]) {
+            icon.className = baseIconClass[item.btnId] + ' text-white';
           }
           if (badge) {
             badge.className = 'bg-white/25 text-white text-[10px] font-semibold px-2 py-0.5 rounded-full';
@@ -1104,8 +1126,8 @@
         } else {
           // Status inaktif netral tanpa highlight
           btn.className = `w-full text-left ${flexLayout} px-3 py-2 text-xs font-medium text-[#6c757d] hover:text-[#343a40] hover:bg-[#f8f9fa] rounded-lg transition-colors group`;
-          if (icon) {
-            icon.className = icon.className.replace(/text-\[[^\]]+\]|text-white/g, '').trim() + ' text-[#adb5bd] group-hover:text-[#343a40]';
+          if (icon && baseIconClass[item.btnId]) {
+            icon.className = baseIconClass[item.btnId] + ' text-[#adb5bd] group-hover:text-[#343a40]';
           }
           if (badge) {
             badge.className = 'bg-[#f1f3f5] text-[#343a40] text-[10px] font-semibold px-2 py-0.5 rounded-full border border-[#dee2e6]';
@@ -1146,22 +1168,56 @@
     }
 
     // ==========================================
-    // 1B. MOBILE HAMBURGER & ACCORDION CONTROLLER
+    // 1B. RESPONSIVE SIDEBAR TOGGLE (DESKTOP & MOBILE)
     // ==========================================
-    function toggleMobileSidebar() {
+    function toggleSidebar() {
+      const isDesktop = window.innerWidth >= 1280;
       const sidebar = document.getElementById('sidebarNav');
       const backdrop = document.getElementById('sidebarBackdrop');
       const icon = document.getElementById('hamburgerIcon');
       if (!sidebar) return;
 
-      const isClosed = sidebar.classList.contains('-translate-x-full');
-      if (isClosed) {
-        sidebar.classList.remove('-translate-x-full');
-        if (backdrop) backdrop.classList.remove('hidden');
+      if (isDesktop) {
+        // Mode Desktop: Slide sembunyikan / tampilkan sidebar
+        const isCollapsed = sidebar.classList.toggle('sidebar-desktop-hidden');
         if (icon) {
-          icon.classList.remove('fa-bars');
-          icon.classList.add('fa-xmark');
+          icon.className = isCollapsed 
+            ? 'fa-solid fa-bars text-sm group-hover:scale-110 transition-transform' 
+            : 'fa-solid fa-bars-staggered text-sm group-hover:scale-110 transition-transform';
         }
+      } else {
+        // Mode Mobile: Off-canvas drawer
+        const isClosed = sidebar.classList.contains('-translate-x-full');
+        if (isClosed) {
+          sidebar.classList.remove('-translate-x-full');
+          if (backdrop) backdrop.classList.remove('hidden');
+          if (icon) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-xmark');
+          }
+          document.body.style.overflow = 'hidden';
+        } else {
+          sidebar.classList.add('-translate-x-full');
+          if (backdrop) backdrop.classList.add('hidden');
+          if (icon) {
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+          }
+          document.body.style.overflow = '';
+        }
+      }
+    }
+
+    function closeSidebar() {
+      const isDesktop = window.innerWidth >= 1280;
+      const sidebar = document.getElementById('sidebarNav');
+      const backdrop = document.getElementById('sidebarBackdrop');
+      const icon = document.getElementById('hamburgerIcon');
+      if (!sidebar) return;
+
+      if (isDesktop) {
+        sidebar.classList.add('sidebar-desktop-hidden');
+        if (icon) icon.className = 'fa-solid fa-bars text-sm group-hover:scale-110 transition-transform';
       } else {
         sidebar.classList.add('-translate-x-full');
         if (backdrop) backdrop.classList.add('hidden');
@@ -1169,24 +1225,19 @@
           icon.classList.remove('fa-xmark');
           icon.classList.add('fa-bars');
         }
+        document.body.style.overflow = '';
       }
     }
 
     function closeMobileSidebar() {
-      const sidebar = document.getElementById('sidebarNav');
-      const backdrop = document.getElementById('sidebarBackdrop');
-      const icon = document.getElementById('hamburgerIcon');
-      if (sidebar && !sidebar.classList.contains('-translate-x-full')) {
-        sidebar.classList.add('-translate-x-full');
-      }
-      if (backdrop && !backdrop.classList.contains('hidden')) {
-        backdrop.classList.add('hidden');
-      }
-      if (icon) {
-        icon.classList.remove('fa-xmark');
-        icon.classList.add('fa-bars');
+      // Hanya menutup jika di layar mobile/tablet (<1280px)
+      if (window.innerWidth < 1280) {
+        closeSidebar();
       }
     }
+
+    // Alias untuk kompatibilitas
+    const toggleMobileSidebar = toggleSidebar;
 
     function toggleKategoriAcara() {
       const list = document.getElementById('kategoriAcaraList');
