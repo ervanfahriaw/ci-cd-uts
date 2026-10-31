@@ -732,7 +732,7 @@
             <!-- Table Header Toolbar -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#f1f3f5]">
               <div>
-                <h3 class="font-semibold text-base text-[#343a40]">Daftar Tamu Aktif</h3>
+                <h3 class="font-semibold text-base text-[#343a40]">Daftar Tamu Masuk</h3>
                 <p id="tableSubtitleCount" class="text-xs text-[#6c757d]">Memuat status kehadiran...</p>
               </div>
               
@@ -756,6 +756,45 @@
               </div>
             </div>
 
+            <!-- Date Filter & History Toolbar -->
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 py-3 px-4 bg-[#f8f9fa] rounded-xl border border-[#e9ecef] my-4">
+              <!-- Left: Date Filter Controls -->
+              <div class="flex flex-wrap items-center gap-2 text-xs">
+                <span class="font-semibold text-[#343a40] flex items-center gap-1.5 shrink-0">
+                  <i class="fa-solid fa-clock-rotate-left text-[#ff5252]"></i>
+                  <span>Filter Riwayat Tanggal:</span>
+                </span>
+
+                <div class="flex items-center gap-1 bg-white p-0.5 rounded-lg border border-[#dee2e6]">
+                  <button id="btnDateAll" onclick="setDateFilter('all')" class="px-2.5 py-1 rounded-md text-xs font-semibold bg-[#ff5252] text-white shadow-sm transition" type="button">
+                    Semua Tanggal
+                  </button>
+                  <button id="btnDateToday" onclick="setDateFilter('today')" class="px-2.5 py-1 rounded-md text-xs font-medium text-[#6c757d] hover:text-[#343a40] transition" type="button">
+                    Hari Ini
+                  </button>
+                </div>
+
+                <div class="flex items-center gap-2 pl-2 border-l border-[#dee2e6]">
+                  <label for="filterGuestDate" class="text-[11px] text-[#6c757d] font-medium shrink-0">Pilih Tanggal:</label>
+                  <div class="relative">
+                    <input id="filterGuestDate" type="date" onchange="setDateFilter(this.value)" class="bg-white text-xs text-[#343a40] px-2.5 py-1 rounded-lg border border-[#dee2e6] focus:outline-none focus:border-[#ff5252] cursor-pointer">
+                  </div>
+                  <button id="btnClearDate" onclick="setDateFilter('all')" class="hidden px-2 py-1 text-[11px] text-[#ff5252] hover:bg-white rounded-md border border-[#fed7d7] transition flex items-center gap-1" type="button" title="Kembalikan ke semua riwayat">
+                    <i class="fa-solid fa-xmark text-xs"></i>
+                    <span>Reset</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Right: Active Status Badge -->
+              <div class="flex items-center gap-2 text-xs text-[#6c757d] self-start lg:self-auto">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-[#dee2e6] text-[11px]">
+                  <i class="fa-regular fa-calendar-check text-[#ff5252]"></i>
+                  <span id="lblDateFilter">Menampilkan: <strong>Semua Tanggal</strong></span>
+                </span>
+              </div>
+            </div>
+
             <!-- Table of visitors -->
             <div class="overflow-x-auto mt-2">
               <table class="w-full text-left border-collapse">
@@ -763,7 +802,7 @@
                   <tr class="border-b border-[#dee2e6] text-[11px] font-semibold text-[#343a40] uppercase tracking-wider bg-[#f8f9fa]/60">
                     <th class="py-3 px-3">Nama Tamu &amp; Instansi</th>
                     <th class="py-3 px-3">Keperluan &amp; Tujuan</th>
-                    <th class="py-3 px-3">Waktu Masuk</th>
+                    <th class="py-3 px-3">Waktu &amp; Tanggal Masuk</th>
                     <th class="py-3 px-3">Status</th>
                     <th class="py-3 px-3 text-right">Aksi</th>
                   </tr>
@@ -1061,6 +1100,88 @@
     let currentFilter = 'Semua';
     let deleteTargetIndex = null;
     let deleteTargetName = '';
+    let selectedDateFilter = 'all'; // 'all', 'today', or 'YYYY-MM-DD'
+
+    function getGuestLocalDate(isoString) {
+      if (!isoString) return '';
+      try {
+        const d = new Date(isoString);
+        if (isNaN(d.getTime())) return '';
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        return `${y}-${m}-${day}`;
+      } catch (e) {
+        return '';
+      }
+    }
+
+    function getTodayLocalDate() {
+      const d = new Date();
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${y}-${m}-${day}`;
+    }
+
+    function formatDisplayDate(dateStr) {
+      if (!dateStr) return '';
+      const parts = dateStr.split('-');
+      if (parts.length !== 3) return dateStr;
+      const y = parts[0];
+      const m = parseInt(parts[1], 10);
+      const d = parseInt(parts[2], 10);
+      const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+      return `${d} ${months[m - 1]} ${y}`;
+    }
+
+    function setDateFilter(val) {
+      const dateInput = document.getElementById('filterGuestDate');
+      const btnAll = document.getElementById('btnDateAll');
+      const btnToday = document.getElementById('btnDateToday');
+      const btnClear = document.getElementById('btnClearDate');
+      const lbl = document.getElementById('lblDateFilter');
+
+      if (val === 'all' || !val) {
+        selectedDateFilter = 'all';
+        if (dateInput) dateInput.value = '';
+        if (btnAll) {
+          btnAll.className = 'px-2.5 py-1 rounded-md text-xs font-semibold bg-[#ff5252] text-white shadow-sm transition';
+        }
+        if (btnToday) {
+          btnToday.className = 'px-2.5 py-1 rounded-md text-xs font-medium text-[#6c757d] hover:text-[#343a40] transition';
+        }
+        if (btnClear) btnClear.classList.add('hidden');
+        if (lbl) lbl.innerHTML = 'Menampilkan: <strong>Semua Tanggal</strong>';
+      } else if (val === 'today') {
+        selectedDateFilter = getTodayLocalDate();
+        if (dateInput) dateInput.value = selectedDateFilter;
+        if (btnAll) {
+          btnAll.className = 'px-2.5 py-1 rounded-md text-xs font-medium text-[#6c757d] hover:text-[#343a40] transition';
+        }
+        if (btnToday) {
+          btnToday.className = 'px-2.5 py-1 rounded-md text-xs font-semibold bg-[#ff5252] text-white shadow-sm transition';
+        }
+        if (btnClear) btnClear.classList.remove('hidden');
+        if (lbl) lbl.innerHTML = 'Menampilkan: <strong>Hari Ini (' + formatDisplayDate(selectedDateFilter) + ')</strong>';
+      } else {
+        selectedDateFilter = val;
+        if (dateInput) dateInput.value = val;
+        if (btnAll) {
+          btnAll.className = 'px-2.5 py-1 rounded-md text-xs font-medium text-[#6c757d] hover:text-[#343a40] transition';
+        }
+        if (btnToday) {
+          const isToday = val === getTodayLocalDate();
+          btnToday.className = isToday 
+            ? 'px-2.5 py-1 rounded-md text-xs font-semibold bg-[#ff5252] text-white shadow-sm transition' 
+            : 'px-2.5 py-1 rounded-md text-xs font-medium text-[#6c757d] hover:text-[#343a40] transition';
+        }
+        if (btnClear) btnClear.classList.remove('hidden');
+        if (lbl) lbl.innerHTML = 'Menampilkan: <strong>' + formatDisplayDate(val) + '</strong>';
+      }
+
+      renderGuestTable();
+    }
 
     // URL API Backend (Bisa via Nginx Reverse Proxy /api/ atau port 8000 langsung)
     const API_BASE = window.location.port === '8081' ? '/api' : '';
@@ -1308,27 +1429,56 @@
 
       tbody.innerHTML = '';
 
-      // Terapkan filter
+      // Terapkan filter Tanggal dan Kategori
       const filtered = allGuests.filter(g => {
-        if (currentFilter === 'Semua') return true;
-        const text = `${g.name} ${g.institution} ${g.purpose}`.toLowerCase();
-        return text.includes(currentFilter.toLowerCase());
+        // Filter Tanggal
+        if (selectedDateFilter && selectedDateFilter !== 'all') {
+          const guestDate = getGuestLocalDate(g.created_at);
+          if (guestDate !== selectedDateFilter) return false;
+        }
+
+        // Filter Kategori (Pill & Navigasi)
+        if (currentFilter && currentFilter !== 'Semua') {
+          const text = `${g.name} ${g.institution} ${g.purpose}`.toLowerCase();
+          if (!text.includes(currentFilter.toLowerCase())) return false;
+        }
+
+        return true;
       });
 
       const paginationInfo = document.getElementById('paginationInfo');
       if (paginationInfo) {
-        paginationInfo.innerHTML = `Menampilkan <strong>${filtered.length}</strong> dari <strong>${allGuests.length}</strong> data`;
+        paginationInfo.innerHTML = `Menampilkan <strong>${filtered.length}</strong> dari <strong>${allGuests.length}</strong> data riwayat`;
+      }
+
+      const tableSubtitle = document.getElementById('tableSubtitleCount');
+      if (tableSubtitle) {
+        if (selectedDateFilter && selectedDateFilter !== 'all') {
+          tableSubtitle.textContent = `Riwayat kunjungan tanggal ${formatDisplayDate(selectedDateFilter)} (${filtered.length} tamu)`;
+        } else {
+          tableSubtitle.textContent = `Total ${allGuests.length} data riwayat kunjungan tercatat`;
+        }
       }
 
       if (filtered.length === 0) {
+        const isDateFiltered = selectedDateFilter && selectedDateFilter !== 'all';
+        const dateDesc = isDateFiltered ? ` pada tanggal ${formatDisplayDate(selectedDateFilter)}` : '';
+        const catDesc = currentFilter !== 'Semua' ? ` untuk kategori "${currentFilter}"` : '';
+
         tbody.innerHTML = `
           <tr>
             <td colspan="5" class="text-center py-12 text-[#adb5bd]">
-              <i class="fa-regular fa-folder-open text-2xl mb-2 block"></i>
-              <span>Belum ada data tamu pada kategori "${currentFilter}".</span>
-              <div class="mt-3">
-                <button onclick="switchView('registrasi')" class="px-3 py-1.5 bg-[#ff5252] text-white rounded text-xs font-semibold hover:bg-[#e03e3e]">
-                  + Tambah Tamu Sekarang
+              <i class="fa-regular fa-calendar-xmark text-3xl mb-3 block text-[#adb5bd]"></i>
+              <p class="font-medium text-[#343a40] text-sm">Tidak ada riwayat kunjungan tamu${dateDesc}${catDesc}.</p>
+              <p class="text-xs text-[#6c757d] mt-1">Silakan pilih tanggal lain atau kembalikan filter ke semua tanggal.</p>
+              <div class="mt-4 flex items-center justify-center gap-2">
+                ${isDateFiltered ? `
+                  <button onclick="setDateFilter('all')" class="px-3 py-1.5 border border-[#dee2e6] bg-white text-[#343a40] rounded text-xs font-semibold hover:bg-[#f8f9fa] transition">
+                    <i class="fa-solid fa-arrows-rotate mr-1 text-[#ff5252]"></i> Lihat Semua Tanggal
+                  </button>
+                ` : ''}
+                <button onclick="switchView('registrasi')" class="px-3 py-1.5 bg-[#ff5252] text-white rounded text-xs font-semibold hover:bg-[#e03e3e] transition">
+                  + Tambah Tamu Baru
                 </button>
               </div>
             </td>
@@ -1341,9 +1491,11 @@
         const tr = document.createElement('tr');
         tr.className = 'hover:bg-[#f8f9fa] transition-colors';
 
-        // Avatar initials
+        // Avatar initials & formatted datetime
         const initials = getInitials(guest.name);
         const formattedTime = formatTimestamp(guest.created_at);
+        const guestLocalDate = getGuestLocalDate(guest.created_at);
+        const displayDate = guestLocalDate ? formatDisplayDate(guestLocalDate) : '-';
 
         tr.innerHTML = `
           <td class="py-3.5 px-3">
@@ -1362,8 +1514,12 @@
             <div class="text-[11px] text-[#adb5bd]">Gedung Bangkit &amp; Rektorat</div>
           </td>
           <td class="py-3.5 px-3 whitespace-nowrap">
-            <div class="text-[#343a40] font-medium">${formattedTime}</div>
-            <div class="text-[11px] text-[#adb5bd]">Tamu #${guest.index !== undefined ? guest.index : idx}</div>
+            <div class="text-[#343a40] font-semibold">${formattedTime}</div>
+            <div class="text-[11px] text-[#6c757d] flex items-center gap-1 mt-0.5">
+              <i class="fa-regular fa-calendar text-[10px] text-[#adb5bd]"></i>
+              <span>${displayDate}</span>
+            </div>
+            <div class="text-[10px] text-[#adb5bd] mt-0.5">ID Tamu #${guest.index !== undefined ? guest.index : idx}</div>
           </td>
           <td class="py-3.5 px-3 whitespace-nowrap">
             <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-[#f8f9fa] text-[#343a40] border border-[#dee2e6]">
@@ -1745,10 +1901,11 @@
         showToast('Tidak ada data tamu untuk diekspor.', 'warning');
         return;
       }
-      let csv = 'No,Nama Tamu,Instansi,Keperluan,Waktu Masuk,Status\n';
+      let csv = 'No,Nama Tamu,Instansi,Keperluan,Tanggal Masuk,Waktu Masuk,Status\n';
       allGuests.forEach((g, i) => {
         const waktu = g.created_at ? formatTimestamp(g.created_at) : '-';
-        csv += `"${i+1}","${(g.name || '').replace(/"/g, '""')}","${(g.institution || '').replace(/"/g, '""')}","${(g.purpose || '').replace(/"/g, '""')}","${waktu}","Checked-In"\n`;
+        const tgl = g.created_at ? formatDisplayDate(getGuestLocalDate(g.created_at)) : '-';
+        csv += `"${i+1}","${(g.name || '').replace(/"/g, '""')}","${(g.institution || '').replace(/"/g, '""')}","${(g.purpose || '').replace(/"/g, '""')}","${tgl}","${waktu}","Checked-In"\n`;
       });
       const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
@@ -1780,6 +1937,7 @@
       let rowsHtml = '';
       allGuests.forEach((g, idx) => {
         const waktu = g.created_at ? formatTimestamp(g.created_at) : '-';
+        const tgl = g.created_at ? formatDisplayDate(getGuestLocalDate(g.created_at)) : '-';
         const bgRow = idx % 2 === 1 ? 'background-color: #fafbfc;' : 'background-color: #ffffff;';
         rowsHtml += `
           <tr style="${bgRow} border-bottom: 1px solid #e9ecef;">
@@ -1787,7 +1945,10 @@
             <td style="padding: 10px 12px; font-weight: 600; color: #343a40; font-size: 12px;">${escapeHTML(g.name || '-')}</td>
             <td style="padding: 10px 12px; color: #495057; font-size: 12px;">${escapeHTML(g.institution || '-')}</td>
             <td style="padding: 10px 12px; color: #495057; font-size: 12px;">${escapeHTML(g.purpose || '-')}</td>
-            <td style="padding: 10px 12px; text-align: center; color: #6c757d; font-size: 11px;">${waktu}</td>
+            <td style="padding: 10px 12px; text-align: center; color: #6c757d; font-size: 11px;">
+              <div style="font-weight: 600; color: #343a40;">${waktu}</div>
+              <div style="font-size: 10px; color: #adb5bd;">${tgl}</div>
+            </td>
             <td style="padding: 10px 12px; text-align: center;">
               <span style="display: inline-block; background: #fff1f1; color: #ff5252; border: 1px solid #fed7d7; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 600;">Checked-In</span>
             </td>
@@ -1922,7 +2083,7 @@
         <th style="width: 24%; text-align: left;">Nama Tamu</th>
         <th style="width: 24%; text-align: left;">Instansi / Lembaga</th>
         <th style="width: 27%; text-align: left;">Keperluan Kunjungan</th>
-        <th style="width: 10%; text-align: center;">Waktu</th>
+        <th style="width: 15%; text-align: center;">Waktu &amp; Tanggal</th>
         <th style="width: 10%; text-align: center;">Status</th>
       </tr>
     </thead>
