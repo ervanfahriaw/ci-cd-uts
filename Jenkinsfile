@@ -76,6 +76,7 @@ pipeline {
                     ${BACKEND_IMAGE}:latest
 
                 echo "Memastikan kontainer frontend Nginx tetap aktif melayani UI..."
+                docker cp design ${FRONTEND_CONTAINER}:/usr/share/nginx/html/ 2>/dev/null || true
                 docker restart ${FRONTEND_CONTAINER} 2>/dev/null || true
                 '''
             }
