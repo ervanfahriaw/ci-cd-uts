@@ -57,6 +57,7 @@ pipeline {
                 sh '''
                 echo "Memastikan Docker Bridge Network ${NETWORK_NAME} tersedia..."
                 docker network create ${NETWORK_NAME} 2>/dev/null || true
+                docker network connect ${NETWORK_NAME} jenkins-server 2>/dev/null || true
 
                 echo "Memastikan Docker Named Volume ${VOLUME_NAME} dipertahankan..."
                 docker volume create ${VOLUME_NAME}
@@ -73,22 +74,8 @@ pipeline {
                     --restart unless-stopped \
                     ${BACKEND_IMAGE}:latest
 
-                echo "Memastikan kontainer frontend Nginx berjalan di ${NETWORK_NAME}..."
-                if ! docker ps --filter "name=${FRONTEND_CONTAINER}" --format '{{.Names}}' | grep -q "^${FRONTEND_CONTAINER}$"; then
-                    docker stop ${FRONTEND_CONTAINER} 2>/dev/null || true
-                    docker rm ${FRONTEND_CONTAINER} 2>/dev/null || true
-                    docker run -d \
-                        --name ${FRONTEND_CONTAINER} \
-                        --network ${NETWORK_NAME} \
-                        -p 8081:80 \
-                        --restart unless-stopped \
-                        nginx:alpine
-                fi
-
-                echo "Menyinkronkan file frontend statis & reverse proxy ke kontainer..."
-                docker cp index.html ${FRONTEND_CONTAINER}:/usr/share/nginx/html/index.html
-                docker cp nginx/default.conf ${FRONTEND_CONTAINER}:/etc/nginx/conf.d/default.conf
-                docker exec ${FRONTEND_CONTAINER} nginx -s reload 2>/dev/null || true
+                echo "Memastikan kontainer frontend Nginx tetap aktif melayani UI..."
+                docker restart ${FRONTEND_CONTAINER} 2>/dev/null || true
                 '''
             }
         }
