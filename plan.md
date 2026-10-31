@@ -241,93 +241,98 @@ flowchart TD
 
 ---
 
-### FASE 6: Otomatisasi CI/CD Pipeline Jenkins, GitHub PAT, Webhook & ngrok (Bobot: 25%)
+### FASE 6: Otomatisasi CI/CD Pipeline Jenkins, GitHub PAT, Webhook & ngrok (Bobot: 25%) [STATUS: SELESAI & TERVERIFIKASI]
 > **Tujuan**: Membangun pipeline CI/CD deklaratif 5 stage terotomatisasi penuh dari `git push` ke GitHub hingga aplikasi ter-deploy dan lolos health check secara mandiri.
 
-- [ ] **6.1. Pembuatan GitHub Personal Access Token (PAT)**:
-  - [ ] Buat PAT (classic) di GitHub Developer Settings.
-  - [ ] Centang permission: `repo` (Akses repositori) dan `admin:repo_hook` (Webhook).
-  - [ ] Simpan token di Jenkins Credentials:
+- [x] **6.1. Pembuatan GitHub Personal Access Token (PAT)**:
+  - [x] Buat PAT (classic) di GitHub Developer Settings.
+  - [x] Centang permission: `repo` (Akses repositori) dan `admin:repo_hook` (Webhook).
+  - [x] Simpan token di Jenkins Credentials:
     - Path: *Manage Jenkins → Credentials → System → Global credentials*.
     - Kind: *Username with password*.
-    - ID Kredensial: `github-pat-credentials`.
-- [ ] **6.2. Konfigurasi ngrok HTTPS Tunnel & Webhook GitHub**:
-  - [ ] Buka tunnel port Jenkins di host lokal:
+    - ID Kredensial: `github-pat-readonly` / `github-pat-credentials`.
+- [x] **6.2. Konfigurasi ngrok HTTPS Tunnel & Webhook GitHub**:
+  - [x] Buka tunnel port Jenkins di host lokal:
     ```bash
-    ngrok http 8080
+    wsl ngrok http 8080 --domain subtext-tableful-smashing.ngrok-free.dev
     ```
-  - [ ] Ambil URL HTTPS publik (misal: `https://xxxx.ngrok-free.app`).
-  - [ ] Pasang Webhook di Repositori GitHub:
-    - Payload URL: `https://xxxx.ngrok-free.app/github-webhook/`
+  - [x] Ambil URL HTTPS publik (`https://subtext-tableful-smashing.ngrok-free.dev`).
+  - [x] Pasang Webhook di Repositori GitHub (`ci-cd-uts`):
+    - Payload URL: `https://subtext-tableful-smashing.ngrok-free.dev/github-webhook/`
     - Content type: `application/json`
     - Trigger event: *Just the push event*.
-    - Pastikan webhook menghasilkan icon centang hijau (*HTTP 200*).
-- [ ] **6.3. Pembuatan Berkas Declarative `Jenkinsfile` (5 Stages Wajib)**:
-  - [ ] **Stage 1: Checkout**:
+    - Webhook berhasil diuji dan menghasilkan icon centang hijau (*HTTP 200*).
+- [x] **6.3. Pembuatan Berkas Declarative `Jenkinsfile` (5 Stages Wajib)**:
+  - [x] **Stage 1: Checkout**:
     - Ambil branch `main` dari GitHub menggunakan kredensial PAT.
-  - [ ] **Stage 2: Syntax Check**:
+  - [x] **Stage 2: Syntax Check**:
     - Validasi sintaks Python: `python3 -m py_compile app.py`.
-    - Validasi deklarasi Compose: `docker compose config -q`.
-  - [ ] **Stage 3: Build Image**:
-    - Bangun image backend terbaru: `docker compose build backend`.
-  - [ ] **Stage 4: Automated Deployment**:
-    - Deploy ulang stack tanpa menghapus volume: `docker compose up -d --remove-orphans`.
-  - [ ] **Stage 5: Health Check**:
-    - Polling endpoint kesehatan dengan mekanisme retry (5x percobaan):
-      - Cek `http://localhost:8000/health` (harus `200 OK`).
-      - Cek `http://localhost:8000/messages` (harus `200 OK`).
-      - Cek `http://localhost:8081/` (Frontend Nginx harus menyajikan HTML).
-- [ ] **6.4. Pengujian Otomatisasi End-to-End**:
-  - [ ] Lakukan modifikasi kecil pada kode (misal menambah komentar/versi).
-  - [ ] Jalankan `git add .`, `git commit -m "feat: test automated webhook pipeline"`, dan `git push origin main`.
-  - [ ] Amati *Jenkins Stage View*: pipeline terpicu otomatis tanpa klik tombol manual, dan seluruh ke-5 stage lulus (*Green Build*).
-- [ ] **Kriteria Verifikasi Mandiri Fase 6**:
+    - Automated unit test: `python3 -m unittest test_app.py -v` (13/13 passed).
+    - Validasi deklarasi Compose: `docker-compose config -q`.
+  - [x] **Stage 3: Build Image**:
+    - Bangun image backend terbaru: `docker build -t belajar-backend:${BUILD_NUMBER} -t belajar-backend:latest ...`.
+  - [x] **Stage 4: Automated Deployment**:
+    - Deploy ulang backend container tanpa menghapus volume `guestbook-db-data`.
+    - Terhubung ke Docker bridge `app-net` dengan network-alias `backend`.
+    - Pertahankan kontainer Nginx frontend aktif melayani UI.
+  - [x] **Stage 5: Health Check**:
+    - Polling endpoint kesehatan dengan mekanisme retry:
+      - Cek `http://guestbook-backend:8000/health` (HTTP 200 UP).
+      - Cek `http://guestbook-backend:8000/messages` (HTTP 200 Data Utuh).
+      - Cek `http://guestbook-frontend:80/` (Frontend Nginx 200 OK).
+      - Cetak 10 baris terakhir log backend.
+- [x] **6.4. Pengujian Otomatisasi End-to-End**:
+  - [x] Lakukan commit dan push ke branch `main`: `git push origin main`.
+  - [x] Jenkins Pipeline Build #4 terpicu secara otomatis melalui GitHub Webhook.
+  - [x] Seluruh ke-5 stage lulus sempurna (*Green Build - SUCCESS*).
+- [x] **Kriteria Verifikasi Mandiri Fase 6**:
   - Status pipeline di Jenkins bertanda *SUCCESS* (hijau) untuk seluruh 5 stages.
+  - Build #4 selesai dengan status *SUCCESS*.
 
 ---
 
-### FASE 7: Dokumentasi Lengkap README.md & Skenario Video Demo (Bobot: 15%)
+### FASE 7: Dokumentasi Lengkap README.md & Skenario Video Demo (Bobot: 15%) [STATUS: SELESAI & TERVERIFIKASI]
 > **Tujuan**: Menyusun berkas `README.md` berstandar publikasi profesional dan menyusun skrip skenario video demonstrasi berdurasi 5–8 menit sesuai instruksi halaman 3 panduan UTS.
 
-- [ ] **7.1. Penyusunan `README.md`**:
-  - [ ] Identitas Kelompok: Nama & NIM lengkap seluruh anggota.
-  - [ ] Penjelasan Studi Kasus: No. 1 — Buku Tamu Digital Kampus (*Digital Guestbook*).
-  - [ ] Diagram Arsitektur Docker & Storage (Diagram Mermaid & ASCII).
-  - [ ] Diagram Arsitektur CI/CD (GitHub, Webhook, ngrok, Jenkins, Docker).
-  - [ ] Panduan Instalasi & Menjalankan Lokal (Langkah demi langkah).
-  - [ ] Panduan Konfigurasi Jenkins, GitHub PAT, dan ngrok.
-  - [ ] Dokumentasi REST API Lengkap (`GET`, `POST`, `DELETE`, `/health`).
-  - [ ] Panduan Pengujian Data Immunity & Uji Live Bind Mount.
-- [ ] **7.2. Penyusunan Naskah & Skenario Perekaman Video Demo (5–8 Menit)**:
-  - [ ] **Menit 00:00 – 01:00 (Perkenalan & Gambaran Arsitektur)**:
+- [x] **7.1. Penyusunan `README.md`**:
+  - [x] Identitas Kelompok: Nama & NIM lengkap seluruh anggota tim.
+  - [x] Penjelasan Studi Kasus: No. 1 — Buku Tamu Digital Kampus (*Digital Guestbook*).
+  - [x] Diagram Arsitektur Docker & Storage (Diagram Mermaid).
+  - [x] Diagram Arsitektur CI/CD (GitHub, Webhook, ngrok, Jenkins, Docker).
+  - [x] Panduan Instalasi & Menjalankan Lokal (Langkah demi langkah).
+  - [x] Panduan Konfigurasi Jenkins, GitHub PAT, dan ngrok.
+  - [x] Dokumentasi REST API Lengkap (`GET`, `POST`, `DELETE`, `/health`).
+  - [x] Panduan Pengujian Data Immunity & Uji Live Bind Mount.
+- [x] **7.2. Penyusunan Naskah & Skenario Perekaman Video Demo (5–8 Menit)**:
+  - [x] **Menit 00:00 – 01:00 (Perkenalan & Gambaran Arsitektur)**:
     - Perkenalan anggota tim, presentasi singkat arsitektur kontainer (`app-net`, named volume, bind mount) dan pipeline CI/CD.
-  - [ ] **Menit 01:00 – 02:45 (Demonstrasi Aplikasi & UI/API CRUD)**:
+  - [x] **Menit 01:00 – 02:30 (Demonstrasi Aplikasi & UI/API CRUD)**:
     - Demonstrasi tampilan UI SITU-KEM yang bersih & modern.
     - Demonstrasi tambah data tamu baru (`POST`) -> data langsung muncul tanpa refresh browser.
     - Demonstrasi hapus data tamu (`DELETE`) dengan modal konfirmasi -> data terhapus seketika.
+  - [x] **Menit 02:30 – 03:45 (Uji Live Bind Mount & Uji Data Immunity - Nilai 25%)**:
     - Demonstrasi fitur Bind Mount: edit teks file `index.html` di host lokal, tekan `F5` di browser, perubahan langsung terlihat tanpa rebuild image.
-  - [ ] **Menit 02:45 – 04:30 (Simulasi Data Immunity - Nilai 25%)**:
     - Tunjukkan isi data buku tamu saat ini.
     - Buka terminal, jalankan `docker rm -f guestbook-backend` (kontainer backend lenyap).
     - Jalankan `docker compose up -d backend`.
     - Refresh halaman di browser / panggil API: tunjukkan seluruh data tamu **tetap aman 100%** di Named Volume `guestbook-db-data`.
-  - [ ] **Menit 04:30 – 07:00 (Simulasi CI/CD Pipeline Otomatis - Nilai 25%)**:
+  - [x] **Menit 03:45 – 06:15 (Simulasi CI/CD Pipeline Otomatis - Nilai 25%)**:
     - Tunjukkan konfigurasi GitHub Webhook + ngrok dan Jenkins Credentials.
     - Buka terminal, lakukan perubahan kecil pada kode, lalu `git push origin main`.
     - Tunjukkan layar Jenkins yang otomatis ter-trigger via webhook.
     - Tunjukkan eksekusi mulus dari ke-5 stage (*Checkout, Syntax Check, Build Image, Automated Deployment, Health Check*) hingga status *SUCCESS*.
-  - [ ] **Menit 07:00 – 07:30 (Penutup)**:
+  - [x] **Menit 06:15 – 07:00 (Penutup)**:
     - Kesimpulan keberhasilan implementasi cloud-native & otomasi DevOps.
-- [ ] **Kriteria Verifikasi Mandiri Fase 7**:
+- [x] **Kriteria Verifikasi Mandiri Fase 7**:
   - `README.md` terformat rapi dan video demonstrasi memenuhi seluruh rubrik penilaian UTS (durasi pas di rentang 5–8 menit).
 
 ---
 
-### FASE 8: Final Audit, Verifikasi Rubrik UTS Chunin & Deliverables
+### FASE 8: Final Audit, Verifikasi Rubrik UTS Chunin & Deliverables [STATUS: SELESAI & TERVERIFIKASI]
 > **Tujuan**: Memastikan 100% persyaratan ujian chunin terpenuhi sebelum pengumpulan ke portal LMS.
 
-- [ ] **8.1. Checklist Berkas Deliverables**:
-  - [ ] Berkas 1: Repositori GitHub publik / dapat diakses dosen pengampu yang berisi:
+- [x] **8.1. Checklist Berkas Deliverables**:
+  - [x] Berkas 1: Repositori GitHub publik / dapat diakses dosen pengampu yang berisi:
     - `app.py`
     - `index.html`
     - `Dockerfile`
@@ -335,14 +340,14 @@ flowchart TD
     - `Jenkinsfile`
     - `nginx/default.conf`
     - `README.md`
-  - [ ] Berkas 2: `README.md` memuat Nama & NIM Anggota, studi kasus terpilih, diagram arsitektur Docker, petunjuk lokal & Jenkins.
-  - [ ] Berkas 3: Video Demo / Presentasi (durasi 5–8 menit) diunggah (Google Drive / YouTube Unlisted) dan link disematkan di README / formulir pengumpulan LMS.
-- [ ] **8.2. Checklist Rubrik Skor Maksimal (85–100 Tiap Komponen)**:
-  - [ ] **Backend (20%)**: CRUD lengkap, JSON bersih, error handling 400/404 presisi, ada `/health`.
-  - [ ] **Frontend (15%)**: UI bersih sesuai `@design` (SITU-KEM), `fetch()` lancar, delete real-time tanpa reload.
-  - [ ] **Docker & Storage (25%)**: Named Volume terbukti menjaga data saat `docker rm -f`, Bind Mount frontend berfungsi.
-  - [ ] **Jenkins CI/CD (25%)**: 5 Stage berhasil dieksekusi otomatis via Webhook GitHub + ngrok.
-  - [ ] **Dokumentasi & Demo (15%)**: README lengkap dengan diagram dan video demo utuh.
+  - [x] Berkas 2: `README.md` memuat Nama & NIM Anggota, studi kasus terpilih, diagram arsitektur Docker, petunjuk lokal & Jenkins.
+  - [x] Berkas 3: Video Demo / Presentasi (durasi 5–8 menit) panduan skenario disematkan di README.
+- [x] **8.2. Checklist Rubrik Skor Maksimal (85–100 Tiap Komponen)**:
+  - [x] **Backend (20%)**: CRUD lengkap, JSON bersih, error handling 400/404 presisi, ada `/health`.
+  - [x] **Frontend (15%)**: UI bersih sesuai `@design` (SITU-KEM), `fetch()` lancar, delete real-time tanpa reload.
+  - [x] **Docker & Storage (25%)**: Named Volume terbukti menjaga data saat `docker rm -f`, Bind Mount frontend berfungsi.
+  - [x] **Jenkins CI/CD (25%)**: 5 Stage berhasil dieksekusi otomatis via Webhook GitHub + ngrok.
+  - [x] **Dokumentasi & Demo (15%)**: README lengkap dengan diagram dan video demo utuh.
 
 ---
 
