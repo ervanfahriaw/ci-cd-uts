@@ -69,6 +69,7 @@ pipeline {
                 docker run -d \
                     --name ${BACKEND_CONTAINER} \
                     --network ${NETWORK_NAME} \
+                    --network-alias backend \
                     -p 8000:8000 \
                     -v ${VOLUME_NAME}:/var/lib/backend_data \
                     --restart unless-stopped \
