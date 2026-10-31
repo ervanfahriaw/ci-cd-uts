@@ -13,7 +13,7 @@
 |:--:|:---|:---:|:---|
 | 1 | **Ervan Fahri A. W.** | *(Isi NIM Anda)* | *Project Lead & DevOps Infrastructure (CI/CD, Webhook, ngrok, Jenkinsfile)* |
 | 2 | *(Nama Anggota 2)* | *(NIM Anggota 2)* | *Backend Developer & Storage Specialist (Python REST API & Data Immunity)* |
-| 3 | *(Nama Anggota 3)* | *(NIM Anggota 3)* | *Frontend Developer & UI/UX Specialist (Vanilla JS, SITU-KEM Design, Bind Mount)* |
+| 3 | *(Nama Anggota 3)* | *(NIM Anggota 3)* | *Frontend Developer & UI/UX Specialist (Vanilla JS, SITAMU Design, Bind Mount)* |
 | 4 | *(Nama Anggota 4)* | *(NIM Anggota 4)* | *QA Engineer, Documentation & Video Presenter (Testing E2E & Recording)* |
 
 > *(Catatan: Silakan sesuaikan daftar anggota di atas dengan tim Anda).*
@@ -26,7 +26,7 @@ Proyek ini merupakan implementasi sistem **Buku Tamu Digital Kampus** berbasis a
 
 ### 🌟 Fitur Unggulan & Pemenuhan Rubrik Chunin Exam
 1. **Lightweight Python Backend (20%)**: REST API murni menggunakan library standar Python (`http.server`, `json`, `os`, `threading`) tanpa framework berat. Dilengkapi mekanisme *Atomic File Write* dan *Thread Lock* untuk proteksi integritas data, serta validasi ketat (kode status `200`, `201`, `400`, `404`, `413`, `415`, `500`).
-2. **SITU-KEM Telkom University Design (15%)**: Antarmuka web mengadopsi standar desain akademik resmi Telkom University (*Crimson Red `#e01a3f`*, font *Inter* & *Open Sans*, layout *Two-Panel Dashboard*, indikator status koneksi real-time, live character counter, modal dialog konfirmasi hapus, dan proteksi XSS murni).
+2. **SITAMU Telkom University Design (15%)**: Antarmuka web mengadopsi standar desain akademik resmi Telkom University (*Crimson Red `#e01a3f`*, font *Inter* & *Open Sans*, layout *Two-Panel Dashboard*, indikator status koneksi real-time, live character counter, modal dialog konfirmasi hapus, dan proteksi XSS murni).
 3. **Data Immunity / Persistensi Data Mutlak (25%)**: Data buku tamu tersimpan di dalam **Docker Named Volume** (`guestbook-db-data`). Terbukti secara empiris: **data tetap utuh 100% meskipun kontainer backend dihancurkan secara paksa (`docker rm -f`)**.
 4. **Live Development via Bind Mount (15%)**: Perubahan kode antarmuka pada berkas `index.html` di host langsung ter-update secara instan pada browser tanpa memerlukan proses *build* ulang Docker image.
 5. **Full Automated CI/CD Pipeline (25%)**: Otomasi penuh dari `git push` ke GitHub, diteruskan secara *real-time* via **GitHub Webhook** melalui **ngrok HTTPS Tunnel** ke **Jenkins Server**, menjalankan *Declarative 5-Stage Pipeline* (Checkout, Syntax & Unit Test, Build Image, Automated Deployment, Health Check).
@@ -442,7 +442,7 @@ Salin URL HTTPS yang dihasilkan, misalnya: `https://subtext-tableful-smashing.ng
 | Segmen Waktu | Topik Demonstrasi | Aktivitas Layar (*Screen Action*) | Narasi Pembicara (*Speaking Script*) |
 |:---:|:---|:---|:---|
 | **00:00 – 01:00**<br>*(1 Menit)* | **Pembukaan & Pengenalan Arsitektur** | - Tampilkan slide / README berisi Nama & NIM anggota tim.<br>- Tampilkan diagram arsitektur Docker & CI/CD di README.<br>- Tunjukkan repositori GitHub publik. | *"Halo Bapak/Ibu Dosen Pengampu Cloud Computing. Kami dari kelompok [Nama Kelompok] beranggotakan [Nama & NIM]. Pada video ini kami mempresentasikan solusi Studi Kasus 1: Buku Tamu Digital Kampus berbasis Docker Container dan Automated CI/CD Pipeline Jenkins..."* |
-| **01:00 – 02:30**<br>*(1.5 Menit)* | **Demonstrasi Web UI & Operasi CRUD (15% & 20%)** | - Buka browser ke `http://localhost:8081`.<br>- Tunjukkan antarmuka berstandar SITU-KEM Telkom University.<br>- Isi formulir nama, instansi, keperluan, klik Simpan.<br>- Tunjukkan data bertambah seketika (*Asinkron fetch()*).<br>- Klik tombol Hapus, muncul modal konfirmasi, konfirmasi hapus.<br>- Buka terminal, tunjukkan endpoint `http://localhost:8000/health`. | *"Dapat kita lihat, antarmuka mengadopsi tema resmi Telkom University dengan layout dashboard dua panel. Input form tervalidasi secara ketat dan menggunakan AJAX fetch tanpa refresh halaman. Ketika kita menghapus data, muncul dialog modal konfirmasi dan nomor indeks otomatis tersinkronisasi..."* |
+| **01:00 – 02:30**<br>*(1.5 Menit)* | **Demonstrasi Web UI & Operasi CRUD (15% & 20%)** | - Buka browser ke `http://localhost:8081`.<br>- Tunjukkan antarmuka berstandar SITAMU Telkom University.<br>- Isi formulir nama, instansi, keperluan, klik Simpan.<br>- Tunjukkan data bertambah seketika (*Asinkron fetch()*).<br>- Klik tombol Hapus, muncul modal konfirmasi, konfirmasi hapus.<br>- Buka terminal, tunjukkan endpoint `http://localhost:8000/health`. | *"Dapat kita lihat, antarmuka mengadopsi tema resmi Telkom University dengan layout dashboard dua panel. Input form tervalidasi secara ketat dan menggunakan AJAX fetch tanpa refresh halaman. Ketika kita menghapus data, muncul dialog modal konfirmasi dan nomor indeks otomatis tersinkronisasi..."* |
 | **02:30 – 03:45**<br>*(1.25 Menit)* | **Uji Live Bind Mount & Uji Data Immunity (25%)** | - Buka `index.html` di VSCode, ganti salah satu teks heading, save.<br>- Refresh browser `http://localhost:8081` (perubahan langsung tampil tanpa build ulang).<br>- Tampilkan daftar tamu saat ini (3 data).<br>- Buka terminal, jalankan `docker rm -f guestbook-backend`.<br>- Tunjukkan kontainer hilang di `docker ps`.<br>- Jalankan `docker compose up -d backend`.<br>- Refresh browser / panggil `GET /messages`. | *"Sekarang kita uji fitur Bind Mount: perubahan file HTML pada host langsung aktif tanpa rebuild image. Selanjutnya, kami buktikan Uji Data Immunity (poin 25%): kami musnahkan kontainer backend dengan 'docker rm -f'. Saat kontainer dinyalakan kembali, seluruh data tamu di Named Volume 'guestbook-db-data' terbukti aman dan utuh 100%!"* |
 | **03:45 – 06:15**<br>*(2.5 Menit)* | **Simulasi Otomasi CI/CD Pipeline (25%)** | - Tampilkan dashboard Jenkins & riwayat build sebelumnya.<br>- Tampilkan status ngrok tunnel dan GitHub Webhook (centang hijau).<br>- Buka editor, buat commit baru (misal update deskripsi kecil).<br>- Jalankan `git push origin main`.<br>- Arahkan layar ke dashboard Jenkins: perlihatkan build terpicu otomatis (*webhook poke*).<br>- Perlihatkan eksekusi ke-5 Stage: *Checkout, Syntax Check, Build Image, Automated Deployment, Health Check* hingga status *SUCCESS*. | *"Sekarang mari kita buktikan keandalan CI/CD Pipeline secara otomatis. Kami melakukan commit dan push ke branch main di GitHub. Melalui integrasi GitHub Webhook dan ngrok, Jenkins otomatis mendeteksi push event dan menjalankan pipeline deklaratif 5 stage. Tahap syntax check menguji 13 unit test Python, image baru dibangun, kontainer di-deploy ulang dengan volume persisten, dan diakhiri automated health check dengan status SUCCESS!"* |
 | **06:15 – 07:00**<br>*(45 Detik)* | **Kesimpulan & Penutup** | - Tampilkan ringkasan checklist rubrik yang telah terpenuhi 100%.<br>- Tunjukkan kembali status aplikasi live yang sehat. | *"Demikian demonstrasi proyek Buku Tamu Digital Kampus dari kelompok kami. Seluruh aspek arsitektur, persistensi data, reverse proxy, dan otomasi CI/CD telah teruji dan memenuhi 100% kriteria penilaian Chunin Exam. Terima kasih."* |
@@ -460,13 +460,13 @@ BELAJAR/
 ├── Jenkinsfile                   # Declarative CI/CD Pipeline (5 Stages Wajib)
 ├── README.md                     # Berkas dokumentasi utama proyek
 ├── app.py                        # Backend REST API murni (Python standard library)
-├── index.html                    # Frontend web UI (SITU-KEM Telkom University Theme)
+├── index.html                    # Frontend web UI (SITAMU Telkom University Theme)
 ├── test_app.py                   # Automated Unit Tests backend (13 skenario uji)
 ├── docs/                         # Dokumen spesifikasi teknis
 │   ├── 01-prd-desain-sistem.md
 │   ├── 02-skema-database.md
 │   └── 03-user-flow.md
-├── design/                       # Desain token dan visual SITU-KEM
+├── design/                       # Desain token dan visual SITAMU
 │   ├── DESIGN.md
 │   └── code.html
 └── nginx/                        # Konfigurasi reverse proxy
@@ -478,7 +478,7 @@ BELAJAR/
 ## 🏆 Checklist Kesiapan Pengumpulan UTS Chunin
 
 - [x] **Backend API (20%)**: CRUD JSON murni tanpa framework, atomic swap, error code 400/404, dan endpoint `/health`.
-- [x] **Frontend Web (15%)**: Desain berstandar tinggi (SITU-KEM), asinkron `fetch()`, tanpa refresh, XSS safe.
+- [x] **Frontend Web (15%)**: Desain berstandar tinggi (SITAMU), asinkron `fetch()`, tanpa refresh, XSS safe.
 - [x] **Docker & Data Immunity (25%)**: Named Volume `guestbook-db-data` teruji kebal terhadap `docker rm -f`, Bind mount `index.html` live update.
 - [x] **Jenkins CI/CD Automation (25%)**: Declarative 5-stage pipeline, GitHub PAT Classic, ngrok HTTPS tunnel, dan Webhook otomatis.
 - [x] **Dokumentasi & Video Presentasi (15%)**: `README.md` komprehensif, diagram Mermaid lengkap, dan naskah skenario video 5–8 menit.
