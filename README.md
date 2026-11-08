@@ -94,7 +94,7 @@ sequenceDiagram
     actor Dev as Developer / Mahasiswa
     participant Git as GitHub (ci-cd-uts.git)
     participant Ngrok as ngrok HTTPS Tunnel
-    participant Jenkins as Jenkins Server (:8085)
+    participant Jenkins as Jenkins Server (:8080)
     participant Docker as Docker Daemon / Engine
     participant Target as Running Containers (App Stack)
 
@@ -390,7 +390,7 @@ Berikut adalah tata cara konfigurasi lengkap integrasi CI/CD dari nol:
 5. Klik **Generate token**, lalu salin string token (contoh: `ghp_xxxxxxxxxxxx`).
 
 ### 2. Konfigurasi Kredensial di Jenkins
-1. Buka dashboard Jenkins di `http://localhost:8085`.
+1. Buka dashboard Jenkins di `http://localhost:8080`.
 2. Masuk ke menu **Manage Jenkins** → **Credentials** → **System** → **Global credentials (unrestricted)**.
 3. Klik **Add Credentials**:
    - **Kind**: `Username with password`
@@ -403,9 +403,9 @@ Berikut adalah tata cara konfigurasi lengkap integrasi CI/CD dari nol:
 ### 3. Membuka Tunnel Publik Menggunakan ngrok
 Karena Jenkins berjalan di jaringan lokal (`localhost:8080`), GitHub memerlukan endpoint publik bertaraf HTTPS untuk mengirim *Webhook Push Event*:
 ```bash
-ngrok http 8085
+ngrok http 8080
 ```
-Salin URL HTTPS yang dihasilkan, misalnya: `https://tennis-magazines-refuse-lock.trycloudflare.com`.
+Salin URL HTTPS yang dihasilkan, misalnya: `https://subtext-tableful-smashing.ngrok-free.dev`.
 
 ### 4. Memasang Webhook di Repositori GitHub
 1. Buka repositori proyek di GitHub: `https://github.com/ervanfahriaw/ci-cd-uts`.

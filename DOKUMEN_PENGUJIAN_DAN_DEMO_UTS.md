@@ -16,7 +16,7 @@ Pastikan aplikasi dan tab browser berikut sudah disiapkan dan dibuka sebelum mem
 
 ### A. Tab Browser (Disarankan menggunakan Google Chrome / Microsoft Edge)
 1. **Tab 1 — Web Aplikasi Frontend**: [http://localhost:8081](http://localhost:8081)
-2. **Tab 2 — Dashboard Jenkins**: [http://localhost:8085/job/chunin-guestbook-pipeline/](http://localhost:8085/job/chunin-guestbook-pipeline/)
+2. **Tab 2 — Dashboard Jenkins**: [http://localhost:8080/job/chunin-guestbook-pipeline/](http://localhost:8080/job/chunin-guestbook-pipeline/)
 3. **Tab 3 — Repositori GitHub**: [https://github.com/ervanfahriaw/ci-cd-uts](https://github.com/ervanfahriaw/ci-cd-uts)
 4. **Tab 4 — Endpoint Backend**: [http://localhost:8000/messages](http://localhost:8000/messages) *(opsional untuk verifikasi JSON mentah)*
 
@@ -182,7 +182,7 @@ Pastikan aplikasi dan tab browser berikut sudah disiapkan dan dibuka sebelum mem
 
 #### 📌 Tindakan Praktis:
 1. Buka tab browser di **Dashboard Jenkins**:
-   - `http://localhost:8085/job/chunin-guestbook-pipeline/`
+   - `http://localhost:8080/job/chunin-guestbook-pipeline/`
    - Perlihatkan riwayat build yang ada saat ini (misal Build terakhir adalah #19 dengan status hijau/biru `SUCCESS`).
 2. Buka terminal atau VS Code untuk membuat perubahan kecil yang memicu commit:
    - Buka `README.md` atau beri komentar kecil di `app.py`.

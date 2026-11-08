@@ -256,9 +256,9 @@ flowchart TD
     ```bash
     wsl ngrok http 8080 --domain subtext-tableful-smashing.ngrok-free.dev
     ```
-  - [x] Ambil URL HTTPS publik (`https://tennis-magazines-refuse-lock.trycloudflare.com`).
+  - [x] Ambil URL HTTPS publik (`https://subtext-tableful-smashing.ngrok-free.dev`).
   - [x] Pasang Webhook di Repositori GitHub (`ci-cd-uts`):
-    - Payload URL: `https://tennis-magazines-refuse-lock.trycloudflare.com/github-webhook/`
+    - Payload URL: `https://subtext-tableful-smashing.ngrok-free.dev/github-webhook/`
     - Content type: `application/json`
     - Trigger event: *Just the push event*.
     - Webhook berhasil diuji dan menghasilkan icon centang hijau (*HTTP 200*).
