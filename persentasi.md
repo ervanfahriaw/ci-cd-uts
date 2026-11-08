@@ -11,17 +11,17 @@ Catat informasi login berikut sebelum memulai demonstrasi:
 
 | Layanan | URL Akses | Username | Password | Keterangan |
 |---|---|:---:|:---:|---|
-| **Jenkins Server** | [http://localhost:8080](http://localhost:8080) | `ervan` | `admin123` | Server CI/CD otomatis |
+| **Jenkins Server** | [http://localhost:8085](http://localhost:8085) | `ervan` | `admin123` | Server CI/CD otomatis |
 | **Aplikasi Web SITAMU** | [http://localhost:8081](http://localhost:8081) | *(Tanpa login)* | *(Tanpa login)* | Antarmuka Buku Tamu Publik |
 | **Backend REST API** | [http://localhost:8000/messages](http://localhost:8000/messages) | *(Publik)* | *(Publik)* | Endpoint data JSON |
-| **GitHub Webhook Tunnel** | `https://subtext-tableful-smashing.ngrok-free.dev` | - | - | Tunnel ngrok aktif ke port 8080 |
+| **GitHub Webhook Tunnel** | `https://subtext-tableful-smashing.ngrok-free.dev` | - | - | Tunnel ngrok aktif ke port 8085 |
 
 ---
 
 ## 🖥️ 1. Persiapan Jendela Sebelum Mulai Merekam Layar
 Buka jendela-jendela berikut dan susun agar siap dipindahkan (*Alt + Tab*):
 1. **Browser Tab 1**: [http://localhost:8081](http://localhost:8081) *(Web Antarmuka SITAMU Telkom University)*
-2. **Browser Tab 2**: [http://localhost:8080/job/chunin-guestbook-pipeline/](http://localhost:8080/job/chunin-guestbook-pipeline/) *(Dashboard Jenkins — Login dengan `ervan` / `admin123`)*
+2. **Browser Tab 2**: [http://localhost:8085/job/chunin-guestbook-pipeline/](http://localhost:8085/job/chunin-guestbook-pipeline/) *(Dashboard Jenkins — Login dengan `ervan` / `admin123`)*
 3. **Browser Tab 3**: [http://localhost:8000/messages](http://localhost:8000/messages) *(Endpoint Backend JSON)*
 4. **Browser Tab 4**: [https://github.com/ervanfahriaw/ci-cd-uts](https://github.com/ervanfahriaw/ci-cd-uts) *(Repositori GitHub)*
 5. **VS Code**: Menampilkan struktur file proyek (`app.py`, `index.html`, `Jenkinsfile`, `README.md`)
@@ -170,7 +170,7 @@ Buka jendela-jendela berikut dan susun agar siap dipindahkan (*Alt + Tab*):
 
 #### 📌 Tindakan Praktis di Layar:
 1. Buka tab browser di **Dashboard Jenkins**:
-   - [http://localhost:8080/job/chunin-guestbook-pipeline/](http://localhost:8080/job/chunin-guestbook-pipeline/) *(Login: `ervan` / `admin123`)*
+   - [http://localhost:8085/job/chunin-guestbook-pipeline/](http://localhost:8085/job/chunin-guestbook-pipeline/) *(Login: `ervan` / `admin123`)*
    - Perlihatkan riwayat build sebelumnya yang berstatus hijau/biru `SUCCESS`.
 2. Buka Terminal / VS Code, buat perubahan kecil dan lakukan commit push ke GitHub:
    ```bash
