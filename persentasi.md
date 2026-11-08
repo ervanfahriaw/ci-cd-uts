@@ -14,7 +14,7 @@ Catat informasi login berikut sebelum memulai demonstrasi:
 | **Jenkins Server** | [http://localhost:8085](http://localhost:8085) | `ervan` | `admin123` | Server CI/CD otomatis |
 | **Aplikasi Web SITAMU** | [http://localhost:8081](http://localhost:8081) | *(Tanpa login)* | *(Tanpa login)* | Antarmuka Buku Tamu Publik |
 | **Backend REST API** | [http://localhost:8000/messages](http://localhost:8000/messages) | *(Publik)* | *(Publik)* | Endpoint data JSON |
-| **GitHub Webhook Tunnel** | `https://subtext-tableful-smashing.ngrok-free.dev` | - | - | Tunnel ngrok aktif ke port 8085 |
+| **GitHub Webhook Tunnel** | `https://tennis-magazines-refuse-lock.trycloudflare.com` | - | - | Tunnel ngrok aktif ke port 8085 |
 
 ---
 
