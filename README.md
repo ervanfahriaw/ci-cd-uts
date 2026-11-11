@@ -12,12 +12,10 @@
 
 | No | Nama Lengkap | NIM | Peran Utama & Kontribusi Teknis |
 |:--:|:---|:---:|:---|
-| 1 | **Ervan Fahri A. W.** | *(Isi NIM Anda)* | **DevOps & Infrastructure Lead**: Perancangan CI/CD Pipeline (Jenkinsfile 5 Stages), integrasi GitHub Webhook via ngrok HTTPS tunnel, arsitektur Docker Compose & Bridge Network, dan unit test automation. |
-| 2 | *(Nama Anggota 2)* | *(NIM Anggota 2)* | **Backend & Storage Engineer**: Pengembangan REST API murni Python (Standard Library), mekanisme *Atomic File Write* & thread-safe locking, skema JSON database, dan pengujian *Data Immunity*. |
-| 3 | *(Nama Anggota 3)* | *(NIM Anggota 3)* | **Frontend & UI/UX Specialist**: Perancangan antarmuka SITAMU Telkom University (Crimson Red palette), asinkronisasi AJAX `fetch()`, sistem notifikasi interaktif, live counter, dan bind mount configuration. |
-| 4 | *(Nama Anggota 4)* | *(NIM Anggota 4)* | **QA Engineer & Technical Documenter**: Penulisan skenario uji 13 automated unit tests, validasi spesifikasi kepatuhan rubrik UTS, dokumentasi REST API, dan penyusunan demonstrasi sistem. |
-
-> *Catatan: Tabel anggota di atas dapat disesuaikan dengan komposisi tim kelompok Anda.*
+| 1 | **Ervan Fahri A. W.** | **101012300308** | **DevOps & Infrastructure Lead**: Perancangan CI/CD Pipeline (Jenkinsfile 5 Stages), integrasi GitHub Webhook via ngrok HTTPS tunnel, arsitektur Docker Compose & Bridge Network, dan unit test automation. |
+| 2 | **Ali Ridho Rizky Lumintu** | **101012580022** | **Backend & Storage Engineer**: Pengembangan REST API murni Python (Standard Library), mekanisme *Atomic File Write* & thread-safe locking, skema JSON database, dan pengujian *Data Immunity*. |
+| 3 | **M Alfian Nur Shidiq** | **101012330090** | **Frontend & UI/UX Specialist**: Perancangan antarmuka SITAMU Telkom University (Crimson Red palette), asinkronisasi AJAX `fetch()`, sistem notifikasi interaktif, live counter, dan bind mount configuration. |
+| 4 | **Nabila Sintya Wardhani** | **101012300228** | **QA Engineer & Technical Documenter**: Penulisan skenario uji 13 automated unit tests, validasi spesifikasi kepatuhan rubrik UTS, dokumentasi REST API, dan penyusunan demonstrasi sistem. |
 
 ---
 
