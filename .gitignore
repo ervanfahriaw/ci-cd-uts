@@ -23,3 +23,10 @@ guestbook.json
 # Operating System files
 Thumbs.db
 .DS_Store
+
+# Academic exam prompt & local presenter scripts
+persentasi.md
+presentasi.md
+DOKUMEN_PENGUJIAN_DAN_DEMO_UTS.md
+plan.md
+Cloud_computing_chunin_exam.pdf
