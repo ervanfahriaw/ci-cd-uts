@@ -405,7 +405,7 @@ Karena Jenkins berjalan di jaringan lokal (`localhost:8080`), GitHub memerlukan 
 ```bash
 ngrok http 8080
 ```
-Salin URL HTTPS yang dihasilkan, misalnya: `https://bear-diving-reflect-newly.trycloudflare.com`.
+Salin URL HTTPS yang dihasilkan, misalnya: `https://subtext-tableful-smashing.ngrok-free.dev`.
 
 ### 4. Memasang Webhook di Repositori GitHub
 1. Buka repositori proyek di GitHub: `https://github.com/ervanfahriaw/ci-cd-uts`.
